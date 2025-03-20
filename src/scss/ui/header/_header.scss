@@ -1,0 +1,299 @@
+@use '../../base/variables' as v;
+@use '../../base/mixins' as m;
+
+.header {
+    padding: 2rem 0 2rem 0;
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index:101;
+        @include m.desktop {
+            display: none;
+        }
+    }
+
+    &__barra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        @include m.desktop {
+            gap: 0;
+        }
+    }
+
+    &__logo-link {
+        width: 40%;
+        flex-shrink: 0;
+
+        @include m.telefono {
+            width: 30%;
+        }
+        @include m.tablet {
+            width: 25%;
+        }
+        @include m.desktop {
+            width: 20%;
+        }
+    }
+
+    &__collapse {
+        width: 2rem;
+        height: 2rem;
+        background-image: url(/public/assets/img/iconos/three-dots.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 2rem auto;
+        transition: 0.2s;
+        cursor: pointer;
+        @include m.desktop {
+            display: none;
+        }
+        &:hover {
+            opacity: 0.75;
+        }
+
+    }
+
+    &__phone-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        &::before {
+            @include m.telefono {
+                content: '';
+                display: inline-block;
+                width: 2.5rem;
+                height: 2.5rem;
+                background-image: url(/public/assets/img/iconos/telephone-fill.svg);
+                background-size: 2.5rem auto;
+                margin-right: 0.75rem;
+            };
+        }
+    }
+
+    &__language {
+        display: flex;
+        justify-content: center;
+        @include m.desktop {
+            justify-content: end;
+            order: -1;
+            flex-basis: 100%;
+        }
+
+        &-button {
+            @include m.boton(v.$primario, v.$negro);
+            cursor: pointer;
+            margin-top: 0;
+            padding-inline: 1rem;
+            transition-property: color;
+            background-color: v.$primario;
+            @include m.desktop {
+                padding: 0 0 0 2rem;
+            }
+            
+            &:not(:disabled):hover {
+                background-color: v.$primario;
+                color: v.$gris;
+            }
+    
+            &:disabled {
+                background-color: v.$primario;
+                cursor: auto;
+                opacity: 0.6;
+            }
+
+
+        }
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    background-color: v.$primario;
+    padding: 5.5rem 2rem;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 102;
+
+    @include m.telefono {
+        width: 50%;
+        padding: 6.5rem 3rem;
+    }
+
+    @include m.tablet {
+        padding: 7rem 4.5rem 5.5rem 4.5rem;
+    }
+
+    @include m.desktop {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: end;
+        padding: 0 2rem;
+        gap: 2rem;
+        width: initial;
+        position: initial;
+        box-shadow: none;
+        background-color: v.$primario;
+        z-index: unset;
+    }
+
+    &--open {
+        transform: translateX(0);
+
+        @include m.desktop {
+            transform: none;
+        }
+    }
+
+    &--closed {
+        transform: translateX(100%);
+
+        @include m.desktop {
+            transform: none;
+        }
+    }
+
+    &__close {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        height: 2rem;
+        margin-bottom: 4rem;
+        z-index: 105;
+        @include m.desktop {
+            display: none;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 0;
+            width: 100%;
+            border-bottom: 0.1rem solid v.$gris;
+            pointer-events: none;
+        }
+
+        .icon {
+            height: 2rem;
+            width: 2rem;
+            background-image: url(/public/assets/img/iconos/x-lg.svg);
+            background-size: 2rem auto;
+            background-repeat: no-repeat;
+            transition: 0.2s;
+
+            &:hover {
+                opacity: 0.75;
+            }
+        }
+    }
+
+    &__enlace {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        transition: 0.2s;
+
+        @include m.desktop {
+            margin: 0;
+        }
+
+        &:hover {
+            color: lighten($color: v.$negro, $amount: 25%);
+        }
+
+        &:nth-child(2) {
+            margin: 2rem 0;
+            padding-top: 1.5rem;
+
+            @include m.desktop {
+                border-top: none;
+                margin: 0;
+                padding-top: 0;
+            }
+        }
+
+        &-telefono {
+            text-align: center;
+            border-top: none !important;
+
+            @include m.desktop {
+                padding-top: 0;
+            }
+        }
+    }
+
+    &__group {
+        @include m.desktop {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            margin-top: 0.25rem;
+            flex-basis: 100%;
+            gap: 5rem;
+        }
+    }
+
+    &__social {
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+
+        @include m.desktop {
+            margin-top: 0;
+            justify-content: end;
+        }
+
+        &-element {
+            transition: 0.2s;
+
+            &:hover {
+                opacity: 0.75;
+            }
+
+            &::after {
+                content: '';
+                padding: 1.25rem;
+                display: inline-block;
+                background-size: 2.5rem;
+            }
+
+            &[href*="instagram"]::after {
+                background-image: url(/assets/img/iconos/instagram.svg);
+            }
+
+            &[href*="facebook"]::after {
+                background-image: url(/assets/img/iconos/facebook.svg);
+            }
+
+            &[href*="wa"]::after {
+                background-image: url(/assets/img/iconos/whatsapp.svg);
+            }
+        }
+    }
+
+    &__accesible {
+        display: block;
+        height: 1px;
+        width: 1px;
+        border: 0;
+        padding: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+    }
+}

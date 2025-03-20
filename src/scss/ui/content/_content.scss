@@ -1,0 +1,351 @@
+@use '../../base/variables' as v;
+@use '../../base/mixins' as m;
+
+.hero {
+    display: flex;
+    gap: 5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 75%;
+    background-image: linear-gradient(180deg, rgba(10,2,2,0.4) 0%, rgba(10,2,2,0.18) 99%), url(/public/assets/img/mixtas/galeria/ig14_12_despues.avif);
+    height: 60rem;
+
+    &__heading {
+        text-align: center;
+        padding-inline: 1rem;
+        @include m.telefono {
+            font-size: 6.2rem;
+        }
+        color: v.$blanco;
+    }
+
+    &__button {
+        @include m.boton(v.$terciario, v.$negro);
+        margin-inline: 4rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
+
+.about {
+    margin: 4rem 0 10rem 0;
+
+    &__contenedor {
+        padding-top: 2rem;
+        @include m.desktop {
+            padding-top: 4rem;
+        }
+    }
+
+    &__imagen {
+        float: left;
+        width: 45%;
+        height: auto;
+        max-width: 210px;
+        margin-right: 2rem;
+        border-radius: 50rem;
+        @include m.telefono {
+            margin-right: 2.5rem;  
+        }
+        @include m.desktop-xxl {
+            max-width: 225px;
+            margin-right: 4.5rem;
+            margin-top: 1.5rem;
+
+        }
+    }
+
+    &__text {
+        font-size: 2rem;
+    }
+}
+
+.services {
+    background-color: v.$secundario;
+    padding-block: 5rem 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__heading {
+        position: relative;
+        text-align: center;
+        padding-bottom: 5rem;
+        &::before {
+            content: '';
+            position: absolute;
+            top: -21rem;
+            left: 0;
+            width: 100%;
+            height: 300%;
+            background-image: url('/public/assets/img/mixtas/g1_f.png');
+            background-size: 400px 400px;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: rotate(90deg);
+            z-index: 0;
+            @include m.desktop {
+                top: -20rem;
+                height: 100%;
+                background-size: 500px 500px;
+            }
+        }
+        &::after {
+            display: none;
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/public/assets/img/mixtas/g1_f.png');
+            background-repeat: no-repeat;
+            background-size: 400px 400px;
+            background-position: center;
+            transform: rotate(270deg);
+            z-index: 0;
+            @include m.desktop {
+                display: unset;
+                top: 20rem;
+                background-size: 500px 500px;
+            }
+        }
+        @include m.desktop {
+            overflow: hidden;
+            padding-inline: 0rem;
+            margin-block: 10%;
+            padding-block: 30rem;
+            font-size: 4.9rem;
+            float: right;
+
+        }
+    }
+
+    &__content {
+        width: 100%;
+        margin: 0 auto;
+        float: left;
+        @include m.desktop {
+            width: 50%;
+        }
+    }
+}
+
+.accordion {
+    margin-bottom: 2rem;
+    @include m.tablet {
+        margin-inline: 5rem;
+    }
+    @include m.desktop {
+        margin-inline: 0 5rem; 
+    }
+}
+
+.accordion-item {
+    padding-top: 2rem;
+    border-radius: .4rem;
+}
+
+.accordion-item hr {
+    border: 1px solid darken(v.$gris, 20%);
+}
+
+.accordion-link {
+    font-size: 1.6rem;
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    cursor: pointer;
+}
+
+.accordion-link h3 {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.accordion-link i {
+    color: v.$gris;
+    padding: .5rem;
+}
+
+.accordion-link ul {
+    display: flex;
+    align-items: flex-end;
+    list-style-type: none;
+    margin-left: 25px;
+}
+
+.accordion-link li {
+    font-size: 10px;
+    color: red;
+    padding: 0 0 1px 5px;
+}
+
+.accordion-link div {
+    display: flex;
+}
+
+.accordion-link .ion-md-arrow-down {
+    display: none;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 650ms;
+}
+
+.answer p {
+    padding: 2rem;
+}
+
+.accordion-item:target .answer {
+    max-height: 20rem;
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-forward {
+    display: none;
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-down {
+    display: block;
+}
+
+.testimonials {
+    margin-block: 5rem;
+    @include m.tablet {
+        margin-block: 8rem;
+    }
+    &__heading {
+        position: relative;
+        text-align: center;
+        padding-bottom: 5rem;
+        @include m.desktop {
+            text-decoration: underline;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: -21rem;
+            left: 0;
+            width: 100%;
+            height: 300%;
+            background-image: url('/public/assets/img/mixtas/g1_f.png');
+            background-size: 400px 400px;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: rotate(90deg);
+            z-index: 0;
+            pointer-events: none;
+            @include m.tablet {
+                top: -24rem;
+            }
+            @include m.desktop {
+                display: none;
+            }
+        }
+    }
+    &__contenedor {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.testimonial {
+    color: #1a1a1a;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6em;
+    text-align: center;
+    max-width: 600px;
+    margin: 3rem auto;
+    @include m.telefono {
+        margin-block: 4rem;
+    }
+    @include m.tablet {
+        margin-block: 5rem;
+    }
+}
+
+.testimonial blockquote {
+    margin: 10px 10px 0;
+    background: #efefef;
+    padding: 20px 60px;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+.testimonial blockquote:before,
+.testimonial blockquote:after {
+    content: "\201C";
+    position: absolute;
+    font-size: 80px;
+    line-height: 1;
+    color: #757f9a;
+    font-style: normal;
+}
+
+.testimonial blockquote:before {
+    top: 0;
+    left: 10px;
+}
+
+.testimonial blockquote:after {
+    content: "\201D";
+    right: 10px;
+    bottom: -0.5em;
+}
+
+.testimonial div {
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #efefef;
+    margin: 0 0 0 60px;
+}
+
+.testimonial p {
+    margin: 8px 0 0 20px;
+    text-align: left;
+    color: v.$negro;
+}
+
+.contactus {
+    background-color: lighten(v.$gris, 20%);
+    
+    &__contenedor {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 5rem;
+        @include m.telefono {
+            flex-direction: row;
+            gap: 3rem; 
+        }
+    }
+    &__heading {
+        font-size: 3.2rem;
+        color: lighten(v.$negro, 30%);
+        text-align: center;
+        @include m.telefono {
+            text-align: unset;
+        }
+    }
+    &__button {
+        @include m.boton(v.$terciario, v.$negro);
+        margin-bottom: 2rem;
+    }
+}
