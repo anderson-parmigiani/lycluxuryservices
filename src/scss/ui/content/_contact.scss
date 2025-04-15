@@ -145,7 +145,9 @@
   font-size: 16px;
 }
 
-.section_10 .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12 {
+.section_10 .responsive-cell-block.wk-desk-8.wk-ipadp-8.wk-tab-12.wk-mobile-12,
+.section_10 .responsive-cell-block.wk-desk-12.wk-ipadp-12.wk-tab-12.wk-mobile-12,
+.section_10 .responsive-cell-block.wk-tab-12.wk-mobile-12.wk-desk-4.wk-ipadp-4 {
   margin-bottom: 40px;
   padding: 0px;
 }
@@ -182,10 +184,10 @@
   }
 }
 
-.section_10 .responsive-cell-block.wk-tab-12.wk-mobile-12.wk-desk-12.wk-ipadp-12 {
-  margin: 0px;
-  padding: 0px;
-}
+// .section_10 .responsive-cell-block.wk-tab-12.wk-mobile-12.wk-desk-12.wk-ipadp-12 {
+//   margin: 0px;
+//   padding: 0px;
+// }
 
 .section_10 .text-blk.input-title {
   font-size: 18px;
@@ -197,12 +199,12 @@
   margin: 0px;
 }
 
-.section_10 .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.first-name {
+.section_10 .responsive-cell-block.wk-desk-8.wk-ipadp-8.wk-tab-12.wk-mobile-12.email {
   padding-right: 30px;
 }
 
 @media (max-width: 768px) {
-  .section_10 .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.first-name {
+  .section_10 .responsive-cell-block.wk-desk-8.wk-ipadp-8.wk-tab-12.wk-mobile-12.email {
     padding-right: 0px;
   }
 }

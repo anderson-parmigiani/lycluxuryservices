@@ -3,6 +3,34 @@
 @use '../../base/mixins' as m;
 
 .gallery {
+  &__btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0.5rem 0 4rem 0;
+    @include m.telefono {
+      margin-top: 3rem;
+      margin-bottom: 4.5rem;
+    }
+    &-item {
+      @include m.boton(v.$terciario, v.$negro);
+      padding: 1rem 4rem;
+      margin-top: 0.5rem;
+      font-size: 1.6rem;
+      padding-inline: 1rem;
+      width: 100%;
+      text-transform: uppercase;
+      cursor: pointer;
+      @include m.telefono {
+        width: 40%;
+      }
+      @include m.tablet {
+        width: 35%;
+        padding: 1.5rem 4rem;
+        margin-top: 2rem;
+      }
+    }
+  }
   &__description {
     text-align: center;
     margin-bottom: 3rem;

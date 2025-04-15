@@ -159,6 +159,66 @@ const Gallery = ({ language }) => {
       ubicacion: 'Osceola, FL',
       despues: ['../../assets/img/mixtas/galeria/ig2_1_despues.avif', '../../assets/img/mixtas/galeria/ig2_2_despues.avif', '../../assets/img/mixtas/galeria/ig2_3_despues.avif', '../../assets/img/mixtas/galeria/ig2_4_despues.avif', '../../assets/img/mixtas/galeria/ig2_5_despues.avif'],
     },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      durante: ['../../assets/img/mixtas/galeria/ig28_1_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig28_1_despues.avif', '../../assets/img/mixtas/galeria/ig28_2_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      antes: ['../../assets/img/mixtas/galeria/ig30_1_antes.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig30_1_despues.avif', '../../assets/img/mixtas/galeria/ig30_2_despues.avif', '../../assets/img/mixtas/galeria/ig30_3_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Altamonte Mall, FL',
+      durante: ['../../assets/img/mixtas/galeria/ig31_1_durante.avif', '../../assets/img/mixtas/galeria/ig31_2_durante.avif', '../../assets/img/mixtas/galeria/ig31_3_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig31_1_despues.avif', '../../assets/img/mixtas/galeria/ig31_2_despues.avif', '../../assets/img/mixtas/galeria/ig31_3_despues.avif', '../../assets/img/mixtas/galeria/ig31_4_despues.avif', '../../assets/img/mixtas/galeria/ig31_5_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      durante: ['../../assets/img/mixtas/galeria/ig34_1_durante.avif', '../../assets/img/mixtas/galeria/ig34_2_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig34_1_despues.avif', '../../assets/img/mixtas/galeria/ig34_2_despues.avif', '../../assets/img/mixtas/galeria/ig34_3_despues.avif', '../../assets/img/mixtas/galeria/ig34_4_despues.avif', '../../assets/img/mixtas/galeria/ig34_5_despues.avif', '../../assets/img/mixtas/galeria/ig34_6_despues.avif', '../../assets/img/mixtas/galeria/ig34_7_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      antes: ['../../assets/img/mixtas/galeria/ig26_1_antes.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig26_1_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      despues: ['../../assets/img/mixtas/galeria/ig24_1_despues.avif', '../../assets/img/mixtas/galeria/ig24_2_despues.avif', '../../assets/img/mixtas/galeria/ig24_3_despues.avif', '../../assets/img/mixtas/galeria/ig24_4_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Sanford, FL',
+      despues: ['../../assets/img/mixtas/galeria/ig29_1_despues.avif', '../../assets/img/mixtas/galeria/ig29_2_despues.avif', '../../assets/img/mixtas/galeria/ig29_3_despues.avif', '../../assets/img/mixtas/galeria/ig29_4_despues.avif', '../../assets/img/mixtas/galeria/ig29_5_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      despues: ['../../assets/img/mixtas/galeria/ig32_1_despues.avif', '../../assets/img/mixtas/galeria/ig32_2_despues.avif', '../../assets/img/mixtas/galeria/ig32_3_despues.avif', '../../assets/img/mixtas/galeria/ig32_4_despues.avif', '../../assets/img/mixtas/galeria/ig32_5_despues.avif', '../../assets/img/mixtas/galeria/ig32_6_despues.avif', '../../assets/img/mixtas/galeria/ig32_7_despues.avif', '../../assets/img/mixtas/galeria/ig32_8_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'St. Augustine, FL',
+      despues: ['../../assets/img/mixtas/galeria/ig33_1_despues.avif', '../../assets/img/mixtas/galeria/ig33_2_despues.avif', '../../assets/img/mixtas/galeria/ig33_3_despues.avif', '../../assets/img/mixtas/galeria/ig33_4_despues.avif', '../../assets/img/mixtas/galeria/ig33_5_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Hollywood, FL',
+      despues: ['../../assets/img/mixtas/galeria/ig25_1_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
+      ubicacion: 'Orlando, FL',
+      despues: ['../../assets/img/mixtas/galeria/ig27_1_despues.avif']
+    },
   ];
 
   return (

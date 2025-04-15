@@ -13,6 +13,7 @@ const GalleryImg = ({ language, proyectos }) => {
   const [animationClass, setAnimationClass] = useState('');
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(3);
+  const [filteredProyectos, setFilteredProyectos] = useState(proyectos);
   const MAX_VISIBLE_INDICATORS = 4;
   const timerRef = useRef(null);
 
@@ -23,7 +24,7 @@ const GalleryImg = ({ language, proyectos }) => {
       clearInterval(timerRef.current);
     }
     return () => clearInterval(timerRef.current);
-  }, [proyectos.length, modalIsOpen, currentIndex]);
+  }, [filteredProyectos.length, modalIsOpen, currentIndex]);
 
   useEffect(() => {
     updateMinMaxIndexes(currentIndex);
@@ -32,7 +33,7 @@ const GalleryImg = ({ language, proyectos }) => {
   const startTimer = () => {
     clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      changeProject((prevIndex) => (prevIndex + 1) % proyectos.length);
+      changeProject((prevIndex) => (prevIndex + 1) % filteredProyectos.length);
     }, 30000);
   };
 
@@ -64,8 +65,8 @@ const GalleryImg = ({ language, proyectos }) => {
   };
 
   const galleryHandlers = useSwipeable({
-    onSwipedLeft: () => changeProject((currentIndex + 1) % proyectos.length),
-    onSwipedRight: () => changeProject((currentIndex - 1 + proyectos.length) % proyectos.length),
+    onSwipedLeft: () => changeProject((currentIndex + 1) % filteredProyectos.length),
+    onSwipedRight: () => changeProject((currentIndex - 1 + filteredProyectos.length) % filteredProyectos.length),
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
@@ -87,8 +88,8 @@ const GalleryImg = ({ language, proyectos }) => {
     if (current < min) {
       setMin(current);
       setMax(current + MAX_VISIBLE_INDICATORS);
-      if (max > proyectos.length) {
-        setMax(proyectos.length);
+      if (max > filteredProyectos.length) {
+        setMax(filteredProyectos.length);
       }
     }
     if (current > max) {
@@ -116,7 +117,36 @@ const GalleryImg = ({ language, proyectos }) => {
     return 'hidden';
   };
 
-  const currentProject = proyectos[currentIndex];
+  const filterProyectos = (filterType) => {
+    const lowerCaseFilter = filterType.toLowerCase();
+    if (lowerCaseFilter === 'all') {
+      setFilteredProyectos(proyectos);
+    } else if (lowerCaseFilter === 'acoustic insulation') {
+      setFilteredProyectos(proyectos.filter(project =>
+        project.descripcion[0].toLowerCase().includes('acoustic') ||
+        project.descripcion[0].toLowerCase().includes('acústico') ||
+        project.descripcion[0].toLowerCase().includes('aislamiento') ||
+        project.descripcion[0].toLowerCase().includes('insulation')
+      ));
+    } else if (lowerCaseFilter === 'construction / remodeling') {
+      setFilteredProyectos(proyectos.filter(project =>
+        !project.descripcion[0].toLowerCase().includes('acoustic') &&
+        !project.descripcion[0].toLowerCase().includes('acústico') &&
+        !project.descripcion[0].toLowerCase().includes('aislamiento') &&
+        !project.descripcion[0].toLowerCase().includes('insulation') &&
+        !project.descripcion[0].toLowerCase().includes('cleaning') &&
+        !project.descripcion[0].toLowerCase().includes('limpieza')
+      ));
+    } else if (lowerCaseFilter === 'cleaning') {
+      setFilteredProyectos(proyectos.filter(project =>
+        project.descripcion[0].toLowerCase().includes('cleaning') ||
+        project.descripcion[0].toLowerCase().includes('limpieza')
+      ));
+    }
+    setCurrentIndex(0);
+  };
+
+  const currentProject = filteredProyectos[currentIndex];
   const currentImages = [
     ...(currentProject?.antes ?? []),
     ...(currentProject?.durante ?? []),
@@ -139,12 +169,20 @@ const GalleryImg = ({ language, proyectos }) => {
     en: {
       textOne: "Previous",
       textTwo: "In progress",
-      textThree: "Completed"
+      textThree: "Completed",
+      textFour: "All",
+      textFive: "Acoustic Insulation",
+      textSix: "Construction / Remodeling",
+      textSeven: "Cleaning",
     },
     es: {
       textOne: "Previo",
       textTwo: "En proceso",
-      textThree: "Culminado"
+      textThree: "Culminado",
+      textFour: "Todos",
+      textFive: "Aislante Acústico",
+      textSix: "Construcción / Remodelación",
+      textSeven: "Limpieza",
     }
   };
 
@@ -155,8 +193,14 @@ const GalleryImg = ({ language, proyectos }) => {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
+      <div className="gallery__btn">
+        <button className='gallery__btn-item' onClick={() => filterProyectos('all')}>{textMap[language].textFour}</button>
+        <button className='gallery__btn-item' onClick={() => filterProyectos('acoustic insulation')}>{textMap[language].textFive}</button>
+        <button className='gallery__btn-item' onClick={() => filterProyectos('construction / remodeling')}>{textMap[language].textSix}</button>
+        <button className='gallery__btn-item' onClick={() => filterProyectos('cleaning')}>{textMap[language].textSeven}</button>
+      </div>
       <div className="gallery__dots">
-        {proyectos.map((_, index) => (
+        {filteredProyectos.map((_, index) => (
           <span
             key={index}
             className={`gallery__dot ${getIndicatorClass(index)}`}
