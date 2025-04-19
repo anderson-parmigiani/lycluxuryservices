@@ -221,6 +221,7 @@ const Contact = ({ language }) => {
         <h2 className="form-heading">{textMap[language].textOne}</h2>
         <p className="form-text">{textMap[language].textTen}</p>
         <form name="contactFormData" netlify-honeypot="bot-field" data-netlify="true" id="iox4" onSubmit={handleSubmit}>
+          <input type="hidden" name="form-name" value="contactFormData" />
           <p className="hidden">
             <label>
               Don’t fill this out if you’re human: <input name="bot-field" />
