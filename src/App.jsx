@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Gallery from './components/Gallery';
@@ -49,6 +49,7 @@ const App = () => {
           <Route path="/home" element={<Home language={language} />} />
           <Route path="/gallery" element={<Gallery language={language} />} />
           <Route path="/contact" element={<Contact language={language} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer language={language} />
       </div>
