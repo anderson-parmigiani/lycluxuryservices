@@ -1,4 +1,5 @@
 import GalleryImg from "./GalleryImg";
+import { Helmet } from 'react-helmet';
 
 const Gallery = ({ language }) => {
   const proyectos = [
@@ -222,7 +223,16 @@ const Gallery = ({ language }) => {
   ];
 
   return (
-    <GalleryImg language={language} proyectos={proyectos} />
+    <section>
+      <Helmet>
+        <title>L&C Luxury Services | Project Gallery</title>
+        <meta
+          name="description"
+          content="Discover our stunning work in both interior and exterior renovations, bringing excellence to every project."
+        />
+      </Helmet>
+      <GalleryImg language={language} proyectos={proyectos} />
+    </section>
   );
 };
 

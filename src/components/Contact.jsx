@@ -1,5 +1,6 @@
 import z from 'zod';
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Contact = ({ language }) => {
   const textMap = {
@@ -217,6 +218,13 @@ const Contact = ({ language }) => {
 
   return (
     <section className="section_10">
+      <Helmet>
+        <title>L&C Luxury Services | Contact</title>
+        <meta
+          name="description"
+          content="Send us a message! We will respond as soon as possible."
+        />
+      </Helmet>
       <div className="responsive-container-block container">
         <h2 className="form-heading">{textMap[language].textOne}</h2>
         <p className="form-text">{textMap[language].textTen}</p>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Home = ({ language }) => {
   const textMap = {
@@ -7,7 +8,7 @@ const Home = ({ language }) => {
       textOne: "Premium Construction & Remodeling Services",
       textTwo: "Get a free consultation",
       textThree: "In the hands of professionals...",
-      textFour: "We have over 5 years of experience in the field of construction and renovation of spaces, both interior and exterior. We take pride in our meticulous dedication, consistent professionalism, and strong sense of responsibility in every project we undertake. We work diligently to ensure client satisfaction, offering personalized solutions tailored to the specific needs and expectations of each client. Our commitment to quality has enabled us to develop successful projects across the United States, providing exceptional service and meeting the highest industry standards. We believe that the key to our success lies in our ability to innovate and continuously improve, driving us to overcome challenges and create spaces that truly transform our clients' lives.",
+      textFour: "We have over 5 years of experience as a contractor in the field of construction and renovation of spaces, both interior and exterior. We take pride in our meticulous dedication, consistent professionalism, and strong sense of responsibility in every project we undertake. We work diligently to ensure client satisfaction, offering personalized solutions tailored to the specific needs and expectations of each client. Our commitment to quality has enabled us to develop successful projects across the United States, providing exceptional service and meeting the highest industry standards. We believe that the key to our success lies in our ability to innovate and continuously improve, driving us to overcome challenges and create spaces that truly transform our clients' lives.",
       textFive: "\u00A0\u00A0\u00A0\u00A0\u00A0Our Services\u00A0\u00A0\u00A0\u00A0\u00A0",
       textSix: "ACOUSTIC INSULATION",
       textSeven: "FRAMING",
@@ -100,6 +101,13 @@ const Home = ({ language }) => {
 
   return (
     <main className="principal">
+      <Helmet>
+        <title>L&C Luxury Services | Contractor</title>
+        <meta
+          name="description"
+          content="We have over 5 years of experience as a contractor in construction and renovation of spaces, both interior and exterior, across the United States."
+        />
+      </Helmet>
       <section className="hero">
         <h1 className="hero__heading">{textMap[language].textOne}</h1>
         <Link className="hero__button" to="/contact">{textMap[language].textTwo}</Link>
@@ -292,7 +300,7 @@ const Home = ({ language }) => {
             </blockquote>
             <div></div>
             <p>
-              Robert Hendricks &mdash; Augusta, CA
+              Robert Hendricks &mdash; Augusta, GA
             </p>
           </div>
           <div className="testimonial">
