@@ -14,6 +14,7 @@ const GalleryImg = ({ language, proyectos }) => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(3);
   const [filteredProyectos, setFilteredProyectos] = useState(proyectos);
+  const [selectedButton, setSelectedButton] = useState('all');
   const MAX_VISIBLE_INDICATORS = 4;
   const timerRef = useRef(null);
 
@@ -118,6 +119,7 @@ const GalleryImg = ({ language, proyectos }) => {
   };
 
   const filterProyectos = (filterType) => {
+    setSelectedButton(filterType);
     const lowerCaseFilter = filterType.toLowerCase();
     if (lowerCaseFilter === 'all') {
       setFilteredProyectos(proyectos);
@@ -194,10 +196,10 @@ const GalleryImg = ({ language, proyectos }) => {
       onTouchEnd={onTouchEnd}
     >
       <div className="gallery__btn">
-        <button className='gallery__btn-item' onClick={() => filterProyectos('all')}>{textMap[language].textFour}</button>
-        <button className='gallery__btn-item' onClick={() => filterProyectos('acoustic insulation')}>{textMap[language].textFive}</button>
-        <button className='gallery__btn-item' onClick={() => filterProyectos('construction / remodeling')}>{textMap[language].textSix}</button>
-        <button className='gallery__btn-item' onClick={() => filterProyectos('cleaning')}>{textMap[language].textSeven}</button>
+        <button className={selectedButton === 'all' ? 'gallery__btn-item gallery__btn-item--selected' : 'gallery__btn-item'} onClick={() => filterProyectos('all')}>{textMap[language].textFour}</button>
+        <button className={selectedButton === 'acoustic insulation' ? 'gallery__btn-item gallery__btn-item--selected' : 'gallery__btn-item'} onClick={() => filterProyectos('acoustic insulation')}>{textMap[language].textFive}</button>
+        <button className={selectedButton === 'construction / remodeling' ? 'gallery__btn-item gallery__btn-item--selected' : 'gallery__btn-item'} onClick={() => filterProyectos('construction / remodeling')}>{textMap[language].textSix}</button>
+        <button className={selectedButton === 'cleaning' ? 'gallery__btn-item gallery__btn-item--selected' : 'gallery__btn-item'} onClick={() => filterProyectos('cleaning')}>{textMap[language].textSeven}</button>
       </div>
       <div className="gallery__dots">
         {filteredProyectos.map((_, index) => (

@@ -29,6 +29,16 @@
         padding: 1.5rem 4rem;
         margin-top: 2rem;
       }
+      &--selected {
+        background-color: v.$gris;
+        color: v.$blanco;
+        cursor: unset;
+
+        &:hover {
+        background-color: v.$gris;
+        color: v.$blanco;
+        }
+      }
     }
   }
   &__description {
