@@ -31,7 +31,7 @@ const Footer = ({ language }) => {
 
           <div className="footer__address">
             <span className="footer__address-content">
-              Westfield, Indiana.
+              Winter Park, Florida.
             </span>
           </div>
 
