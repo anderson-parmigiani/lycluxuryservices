@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Helmet } from 'react-helmet';
+import { useSwipeable } from 'react-swipeable';
 
 const Home = ({ language }) => {
   const textMap = {
@@ -37,6 +38,8 @@ const Home = ({ language }) => {
       textThirty: "The kitchen remodeling project exceeded my expectations. The workers were very skilled and kept the work area tidy throughout the project. The final result is stunning, and the quality of the materials used is top-notch. My kitchen now feels like a new space, and I love it!",
       textThirtyOne: "Make your project a reality.",
       textThirtyTwo: "LET'S TALK",
+      textThirtyThree: "We hired the deep cleaning service for our store and we were very satisfied. The team was punctual, very thorough, and left every corner spotless, even in the hardest-to-reach areas. The environment now feels much more pleasant for both customers and staff. We will definitely call them again!",
+      textThirtyFour: "We requested a cleaning service and the result was excellent. The team worked with great dedication and left everything sparkling clean, even the areas that are usually overlooked. Our customers noticed the difference right away. Highly recommended!"
     },
     es: {
       textOne: "Servicios Premium de Construcción & Remodelación",
@@ -71,8 +74,37 @@ const Home = ({ language }) => {
       textThirty: "El proyecto de remodelación de la cocina superó mis expectativas. Los trabajadores eran muy hábiles y mantuvieron el área de trabajo ordenada durante todo el proyecto. El resultado final es impresionante y la calidad de los materiales utilizados es de primera. ¡Mi cocina ahora se siente como un espacio nuevo y me encanta!",
       textThirtyOne: "Haz realidad tu proyecto.",
       textThirtyTwo: "HABLEMOS",
+      textThirtyThree: "Contratamos el servicio de limpieza profunda para nuestra tienda y quedamos muy satisfechos. El equipo fue puntual, muy detallista y dejó cada rincón impecable, incluso en las áreas más difíciles de alcanzar. Ahora el ambiente es mucho más agradable tanto para los clientes como para el personal. ¡Sin duda los volveremos a llamar!",
+      textThirtyFour: "Solicitamos una limpieza y el resultado fue excelente. El equipo trabajó con mucha dedicación y dejó todo reluciente, incluso las áreas que normalmente se pasan por alto. Nuestros clientes notaron la diferencia de inmediato. ¡Muy recomendados!"
     }
   };
+
+  const testimonialsData = [
+    {
+      textKey: 'textTwentySeven',
+      author: 'Robert Hendricks — Augusta, GA',
+    },
+    {
+      textKey: 'textThirty',
+      author: 'Peter Morris — Indianapolis, IN',
+    },
+    {
+      textKey: 'textTwentyNine',
+      author: 'Keira Fletcher — Lake Mary, FL',
+    },
+    {
+      textKey: 'textThirtyFour',
+      author: 'Carol Rodriguez — St. Augustine, FL',
+    },
+    {
+      textKey: 'textTwentyEight',
+      author: 'Allie Castillo — Orlando, FL',
+    },
+    {
+      textKey: 'textThirtyThree',
+      author: 'Maria Gonzales — Sanford, FL',
+    },
+  ];
 
   useEffect(() => {
     const links = document.querySelectorAll('.accordion-link');
@@ -98,6 +130,66 @@ const Home = ({ language }) => {
       links.forEach(link => link.removeEventListener('click', handleAccordionClick));
     };
   }, []);
+
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [fade, setFade] = useState(false);
+  const timerRef = useRef(null);
+
+  const handlePrev = () => {
+    setFade(false);
+    setTimeout(() => {
+      setTestimonialIndex((prev) =>
+        prev === 0 ? testimonialsData.length - 2 : prev - 2
+      );
+      setFade(true);
+      startTimer();
+    }, 10);
+  };
+
+  const handleNext = () => {
+    setFade(false);
+    setTimeout(() => {
+      setTestimonialIndex((prev) =>
+        prev + 2 >= testimonialsData.length ? 0 : prev + 2
+      );
+      setFade(true);
+      startTimer();
+    }, 10);
+  };
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setTestimonialIndex((prev) =>
+          prev + 2 >= testimonialsData.length ? 0 : prev + 2
+        );
+        setFade(true);
+      }, 10);
+    }, 30000);
+  };
+
+  useEffect(() => {
+    setFade(true);
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const onTouchStart = () => {
+    clearInterval(timerRef.current);
+  };
+
+  const onTouchEnd = () => {
+    startTimer();
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
 
   return (
     <main className="principal">
@@ -293,43 +385,42 @@ const Home = ({ language }) => {
 
       <section className='testimonials'>
         <h2 className="testimonials__heading">{textMap[language].textTwentySix}</h2>
+        <div className="testimonials__slider"
+          {...swipeHandlers}           
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <div className="testimonials__arrow-group">
+            <button
+              className="testimonials__arrow testimonials__arrow--left"
+              onClick={handlePrev}
+              aria-label="Previous testimonials"
+            >
+            </button>
+            <button
+              className="testimonials__arrow testimonials__arrow--right"
+              onClick={handleNext}
+              aria-label="Next testimonials"
+            >
+            </button>
+          </div>
         <div className="testimonials__contenedor">
-          <div className="testimonial">
-            <blockquote>
-              {textMap[language].textTwentySeven}
-            </blockquote>
-            <div></div>
-            <p>
-              Robert Hendricks &mdash; Augusta, GA
-            </p>
-          </div>
-          <div className="testimonial">
-            <blockquote>
-              {textMap[language].textTwentyEight}
-            </blockquote>
-            <div></div>
-            <p>
-              Allie Castillo &mdash; Orlando, FL
-            </p>
-          </div>
-          <div className="testimonial">
-            <blockquote>
-            {textMap[language].textTwentyNine}
-            </blockquote>
-            <div></div>
-            <p>
-              Keira Fletcher &mdash; Lake Mary, FL
-            </p>
-          </div>
-          <div className="testimonial">
-            <blockquote>
-            {textMap[language].textThirty}
-            </blockquote>
-            <div></div>
-            <p>
-              Peter Morris &mdash; Indianapolis, IN
-            </p>
-          </div>
+          {testimonialsData
+            .slice(testimonialIndex, testimonialIndex + 2)
+            .map((testimonial, idx) => (
+              <div
+                className={`testimonial${fade ? ' testimonial--fade' : ''}`}
+                key={testimonial.textKey}
+              >
+                <blockquote>
+                  {textMap[language][testimonial.textKey]}
+                </blockquote>
+                <div></div>
+                <p>{testimonial.author}</p>
+              </div>
+            ))}
+        </div>
+
         </div>
       </section>
       <section className='contactus'>

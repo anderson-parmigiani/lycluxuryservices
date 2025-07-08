@@ -254,10 +254,50 @@
             }
         }
     }
+
+    &__arrow-group {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+
+    &__arrow {
+        background: transparent;
+        border: none;
+        z-index: 1;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        width: 3.5rem;
+        height: 3.5rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 3.2rem auto;
+
+        &--right {
+            background-image: url(/public/assets/img/iconos/arrow-right.svg);
+        }
+
+        &--left {
+            background-image: url(/public/assets/img/iconos/arrow-left.svg);
+        }
+    }
+
     &__contenedor {
         display: flex;
         flex-wrap: wrap;
     }
+}
+
+@keyframes testimonial-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .testimonial {
@@ -273,6 +313,10 @@
     }
     @include m.tablet {
         margin-block: 5rem;
+    }
+
+    &--fade {
+        animation: testimonial-fade-in 0.7s cubic-bezier(0.4,0,0.2,1);
     }
 }
 
@@ -347,5 +391,6 @@
     &__button {
         @include m.boton(v.$terciario, v.$negro);
         margin-bottom: 2rem;
+        text-align: center;
     }
 }
