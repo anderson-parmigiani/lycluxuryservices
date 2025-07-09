@@ -39,7 +39,7 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig8_1_despues.avif', '../../assets/img/mixtas/galeria/ig8_2_despues.avif', '../../assets/img/mixtas/galeria/ig8_3_despues.avif']
     },
     {
-      descripcion: language === 'en' ? ['Baffle ceiling installation'] : ['Instalación de deflector de techo'],
+      descripcion: language === 'en' ? ['Acoustic Baffle ceiling installation'] : ['Instalación de deflector de techo acústico'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
       durante: ['../../assets/img/mixtas/galeria/ig9_1_durante.avif', '../../assets/img/mixtas/galeria/ig9_2_durante.avif', '../../assets/img/mixtas/galeria/ig9_3_durante.avif', '../../assets/img/mixtas/galeria/ig9_4_durante.avif'],
@@ -128,6 +128,13 @@ const Gallery = ({ language }) => {
       antes: ['../../assets/img/mixtas/galeria/ig18_1_antes.avif'],
       durante: ['../../assets/img/mixtas/galeria/ig18_1_durante.avif'],
       despues: ['../../assets/img/mixtas/galeria/ig18_1_despues.avif', '../../assets/img/mixtas/galeria/ig18_2_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Phenolic panels installation'] : ['Instalación de paneles fenólicos'],
+      ubicacion: 'Savannah, GA',
+      antes: ['../../assets/img/mixtas/galeria/ig35_1_antes.avif'],
+      durante: ['../../assets/img/mixtas/galeria/ig35_1_durante.avif', '../../assets/img/mixtas/galeria/ig35_2_durante.avif', '../../assets/img/mixtas/galeria/ig35_3_durante.avif', '../../assets/img/mixtas/galeria/ig35_4_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig35_1_despues.avif', '../../assets/img/mixtas/galeria/ig35_2_despues.avif', '../../assets/img/mixtas/galeria/ig35_3_despues.avif', '../../assets/img/mixtas/galeria/ig35_4_despues.avif']
     },
     {
       descripcion: language === 'en' ? ['Acoustic wall panels installation'] : ['Instalación de paneles de pared acústicos'],

@@ -39,7 +39,9 @@ const Home = ({ language }) => {
       textThirtyOne: "Make your project a reality.",
       textThirtyTwo: "LET'S TALK",
       textThirtyThree: "We hired the deep cleaning service for our store and we were very satisfied. The team was punctual, very thorough, and left every corner spotless, even in the hardest-to-reach areas. The environment now feels much more pleasant for both customers and staff. We will definitely call them again!",
-      textThirtyFour: "We requested a cleaning service and the result was excellent. The team worked with great dedication and left everything sparkling clean, even the areas that are usually overlooked. Our customers noticed the difference right away. Highly recommended!"
+      textThirtyFour: "We requested a cleaning service and the result was excellent. The team worked with great dedication and left everything sparkling clean, even the areas that are usually overlooked. Our customers noticed the difference right away. Highly recommended!",
+      textThirtyFive: "PHENOLIC PANELS",
+      textThirtySix: "Enhance your spaces with our phenolic panels installation service. We specialize in the professional installation of high-quality phenolic (HPL) panels, providing exceptional durability, modern aesthetics, and easy maintenance. Ideal for both interior and exterior applications, our expert team ensures a flawless installation that elevates the look and functionality of your property.",
     },
     es: {
       textOne: "Servicios Premium de Construcción & Remodelación",
@@ -75,7 +77,9 @@ const Home = ({ language }) => {
       textThirtyOne: "Haz realidad tu proyecto.",
       textThirtyTwo: "HABLEMOS",
       textThirtyThree: "Contratamos el servicio de limpieza profunda para nuestra tienda y quedamos muy satisfechos. El equipo fue puntual, muy detallista y dejó cada rincón impecable, incluso en las áreas más difíciles de alcanzar. Ahora el ambiente es mucho más agradable tanto para los clientes como para el personal. ¡Sin duda los volveremos a llamar!",
-      textThirtyFour: "Solicitamos una limpieza y el resultado fue excelente. El equipo trabajó con mucha dedicación y dejó todo reluciente, incluso las áreas que normalmente se pasan por alto. Nuestros clientes notaron la diferencia de inmediato. ¡Muy recomendados!"
+      textThirtyFour: "Solicitamos una limpieza y el resultado fue excelente. El equipo trabajó con mucha dedicación y dejó todo reluciente, incluso las áreas que normalmente se pasan por alto. Nuestros clientes notaron la diferencia de inmediato. ¡Muy recomendados!",
+      textThirtyFive: "PANELES FENÓLICOS",
+      textThirtySix: "Mejora tus espacios con nuestro servicio de instalación de paneles fenólicos. Nos especializamos únicamente en la instalación profesional de paneles fenólicos (HPL) de alta calidad, que ofrecen durabilidad excepcional, estética moderna y fácil mantenimiento. Ideales para aplicaciones interiores y exteriores, nuestro equipo experto garantiza una instalación impecable que eleva la apariencia y funcionalidad de tu propiedad.",
     }
   };
 
@@ -315,6 +319,21 @@ const Home = ({ language }) => {
                 </a>
                 <div className="answer">
                   <p>{textMap[language].textTwentyOne}</p>
+                </div>
+                <hr />
+              </div>
+              <div className="accordion-item" id="question11">
+                <a className="accordion-link">
+                  <div className="flex">
+                    <h3>{textMap[language].textThirtyFive}</h3>
+                    <ul>
+                    </ul>
+                  </div>
+                  <i className="icon ion-md-arrow-forward"></i>
+                  <i className="icon ion-md-arrow-down"></i>
+                </a>
+                <div className="answer">
+                  <p>{textMap[language].textThirtySix}</p>
                 </div>
                 <hr />
               </div>
