@@ -3,44 +3,55 @@
 @use '../../base/mixins' as m;
 
 .gallery {
-  &__btn {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 0.5rem 0 4rem 0;
-    @include m.telefono {
-      margin-top: 3rem;
-      margin-bottom: 4.5rem;
+
+  &__heading {
+    text-align: center;
+    padding-bottom: 3rem;
+    @include m.tablet {
+      padding-bottom: 5rem;
     }
+  }
+
+  &__btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 2rem;
+
     &-item {
-      @include m.boton(v.$terciario, v.$negro);
-      padding: 1rem 4rem;
-      margin-top: 0.5rem;
+    padding: 0.4em 1.2em;
+    font-size: 1.3rem;
+    border-radius: 999px;
+    background: #e3eaf2;
+    color: #222;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    min-width: unset;
+    min-height: unset;
+    outline: none;
+
+    @include m.telefono {
       font-size: 1.6rem;
-      padding-inline: 1rem;
-      width: 100%;
-      text-transform: uppercase;
-      cursor: pointer;
-      @include m.telefono {
-        width: 40%;
-      }
-      @include m.tablet {
-        width: 35%;
-        padding: 1.5rem 4rem;
-        margin-top: 2rem;
-      }
+    }
+
       &--selected {
         background-color: v.$gris;
         color: v.$blanco;
         cursor: unset;
 
         &:hover {
-        background-color: v.$gris;
-        color: v.$blanco;
+          background: v.$gris;
+          color: v.$blanco;
         }
       }
     }
   }
+
   &__description {
     text-align: center;
     margin-bottom: 3rem;
@@ -106,7 +117,7 @@
       grid-template-columns: repeat(4, 1fr);
     }
     
-    img {
+    img, video {
       width: 95%;
       height: auto;
       max-height: 300px;
@@ -117,6 +128,26 @@
 
       &:hover {
         transform: scale(1.02);
+      }
+    }
+
+    video {
+      min-width: 122px;
+      height: 180px;
+      min-height: 100px;
+      object-fit: contain;
+      object-position: center;
+      background: v.$negro;
+      transition: none;
+      cursor: default;
+
+      @include m.tablet {
+        height: auto;
+        min-height: 120px;
+      }
+
+      &:hover {
+        transform: none;
       }
     }
   }

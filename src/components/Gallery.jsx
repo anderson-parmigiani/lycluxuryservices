@@ -134,7 +134,8 @@ const Gallery = ({ language }) => {
       ubicacion: 'Savannah, GA',
       antes: ['../../assets/img/mixtas/galeria/ig35_1_antes.avif'],
       durante: ['../../assets/img/mixtas/galeria/ig35_1_durante.avif', '../../assets/img/mixtas/galeria/ig35_2_durante.avif', '../../assets/img/mixtas/galeria/ig35_3_durante.avif', '../../assets/img/mixtas/galeria/ig35_4_durante.avif'],
-      despues: ['../../assets/img/mixtas/galeria/ig35_1_despues.avif', '../../assets/img/mixtas/galeria/ig35_2_despues.avif', '../../assets/img/mixtas/galeria/ig35_3_despues.avif', '../../assets/img/mixtas/galeria/ig35_4_despues.avif']
+      despues: ['../../assets/img/mixtas/galeria/ig35_1_despues.avif', '../../assets/img/mixtas/galeria/ig35_2_despues.avif', '../../assets/img/mixtas/galeria/ig35_3_despues.avif', '../../assets/img/mixtas/galeria/ig35_4_despues.avif', '../../assets/img/mixtas/galeria/ig35_5_despues.avif'],
+      videos: ['../../assets/videos/ig35_1_video.MP4']
     },
     {
       descripcion: language === 'en' ? ['Acoustic wall panels installation'] : ['Instalación de paneles de pared acústicos'],

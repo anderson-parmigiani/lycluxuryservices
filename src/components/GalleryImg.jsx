@@ -15,17 +15,18 @@ const GalleryImg = ({ language, proyectos }) => {
   const [max, setMax] = useState(3);
   const [filteredProyectos, setFilteredProyectos] = useState(proyectos);
   const [selectedButton, setSelectedButton] = useState('all');
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const MAX_VISIBLE_INDICATORS = 4;
   const timerRef = useRef(null);
 
   useEffect(() => {
-    if (!modalIsOpen) {
+    if (!modalIsOpen && !isVideoPlaying) {
       startTimer();
     } else {
       clearInterval(timerRef.current);
     }
     return () => clearInterval(timerRef.current);
-  }, [filteredProyectos.length, modalIsOpen, currentIndex]);
+  }, [filteredProyectos.length, modalIsOpen, currentIndex, isVideoPlaying]);
 
   useEffect(() => {
     updateMinMaxIndexes(currentIndex);
@@ -172,6 +173,8 @@ const GalleryImg = ({ language, proyectos }) => {
       textFive: "Acoustic Insulation",
       textSix: "Construction / Remodeling",
       textSeven: "Cleaning",
+      textEight: "Videos",
+      textNine: "Gallery"
     },
     es: {
       textOne: "Previo",
@@ -181,6 +184,9 @@ const GalleryImg = ({ language, proyectos }) => {
       textFive: "Aislante Acústico",
       textSix: "Construcción / Remodelación",
       textSeven: "Limpieza",
+      textEight: "Videos",
+      textNine: "Galería"
+
     }
   };
 
@@ -191,6 +197,7 @@ const GalleryImg = ({ language, proyectos }) => {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
+      <h2 className="gallery__heading">{textMap[language].textNine}</h2>
       <div className="gallery__btn">
         <button className={selectedButton === 'all' ? 'gallery__btn-item gallery__btn-item--selected' : 'gallery__btn-item'} onClick={() => filterProyectos('all')}>{textMap[language].textFour}</button>
         <button className={selectedButton === 'acoustic insulation' ? 'gallery__btn-item gallery__btn-item--selected' : 'gallery__btn-item'} onClick={() => filterProyectos('acoustic insulation')}>{textMap[language].textFive}</button>
@@ -265,6 +272,25 @@ const GalleryImg = ({ language, proyectos }) => {
                         (currentProject?.durante?.length || 0)
                     )
                   }
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {currentProject?.videos?.length > 0 && (
+          <div className="gallery__project">
+            <h3 className="gallery__project-text">{textMap[language].textEight}</h3>
+            <div className="gallery__images">
+              {currentProject.videos.map((video, index) => (
+                <video
+                  key={index}
+                  src={video}
+                  controls
+                  controlsList="nodownload"
+                  onPlay={() => setIsVideoPlaying(true)}
+                  onPause={() => setIsVideoPlaying(false)}
+                  onEnded={() => setIsVideoPlaying(false)}
                 />
               ))}
             </div>
