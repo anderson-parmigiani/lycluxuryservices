@@ -139,6 +139,11 @@ const Gallery = ({ language }) => {
     },
     {
       descripcion: language === 'en' ? ['Acoustic wall panels installation'] : ['Instalación de paneles de pared acústicos'],
+      ubicacion: 'Columbus, GA',
+      videos: ['../../assets/videos/ig36_1_video.mp4', '../../assets/videos/ig36_2_video.mp4']
+    },
+    {
+      descripcion: language === 'en' ? ['Acoustic wall panels installation'] : ['Instalación de paneles de pared acústicos'],
       ubicacion: 'Gainesville, FL',
       antes: [],
       durante: [],

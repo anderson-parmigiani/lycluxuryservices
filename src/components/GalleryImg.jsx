@@ -129,7 +129,10 @@ const GalleryImg = ({ language, proyectos }) => {
         project.descripcion[0].toLowerCase().includes('acoustic') ||
         project.descripcion[0].toLowerCase().includes('acústico') ||
         project.descripcion[0].toLowerCase().includes('aislamiento') ||
-        project.descripcion[0].toLowerCase().includes('insulation')
+        project.descripcion[0].toLowerCase().includes('insulation') ||
+        project.descripcion[0].toLowerCase().includes('phenolic') ||
+        project.descripcion[0].toLowerCase().includes('fenólicos')
+        
       ));
     } else if (lowerCaseFilter === 'construction / remodeling') {
       setFilteredProyectos(proyectos.filter(project =>
