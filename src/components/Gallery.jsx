@@ -32,6 +32,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig7_1_despues.avif', '../../assets/img/mixtas/galeria/ig7_2_despues.avif', '../../assets/img/mixtas/galeria/ig7_3_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Flooring'] : ['Instalación de piso'],
+      ubicacion: 'Westfield, IN',
+      antes: ['../../assets/img/mixtas/galeria/ig36_1_antes.avif', '../../assets/img/mixtas/galeria/ig36_2_antes.avif'],
+      durante: ['../../assets/img/mixtas/galeria/ig36_1_durante.avif', '../../assets/img/mixtas/galeria/ig36_2_durante.avif', '../../assets/img/mixtas/galeria/ig36_3_durante.avif', '../../assets/img/mixtas/galeria/ig36_4_durante.avif', '../../assets/img/mixtas/galeria/ig36_5_durante.avif', '../../assets/img/mixtas/galeria/ig36_6_durante.avif', '../../assets/img/mixtas/galeria/ig36_7_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig36_1_despues.avif', '../../assets/img/mixtas/galeria/ig36_2_despues.avif', '../../assets/img/mixtas/galeria/ig36_3_despues.avif', '../../assets/img/mixtas/galeria/ig36_4_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
