@@ -42,6 +42,8 @@ const Home = ({ language }) => {
       textThirtyFour: "We requested a cleaning service and the result was excellent. The team worked with great dedication and left everything sparkling clean, even the areas that are usually overlooked. Our customers noticed the difference right away. Highly recommended!",
       textThirtyFive: "PHENOLIC PANELS",
       textThirtySix: "Enhance your spaces with our phenolic panels installation service. We specialize in the professional installation of high-quality phenolic (HPL) panels, providing exceptional durability, modern aesthetics, and easy maintenance. Ideal for both interior and exterior applications, our expert team ensures a flawless installation that elevates the look and functionality of your property.",
+      textThirtySeven: "The flooring installation in my bathroom was exceptional. The team was professional, efficient, and the result is stunning. The new flooring is durable and looks fantastic. Highly recommend their services!",
+      textThirtyEight: "Impressive acoustic wall panel installation. The installers were skilled and attentive, achieving seamless finishes and a clean look. The room’s sound quality improved noticeably and the wall adds a refined, modern touch. Very satisfied with the final result.",
     },
     es: {
       textOne: "Servicios Premium de Construcción & Remodelación",
@@ -80,6 +82,8 @@ const Home = ({ language }) => {
       textThirtyFour: "Solicitamos una limpieza y el resultado fue excelente. El equipo trabajó con mucha dedicación y dejó todo reluciente, incluso las áreas que normalmente se pasan por alto. Nuestros clientes notaron la diferencia de inmediato. ¡Muy recomendados!",
       textThirtyFive: "PANELES FENÓLICOS",
       textThirtySix: "Mejora tus espacios con nuestro servicio de instalación de paneles fenólicos. Nos especializamos únicamente en la instalación profesional de paneles fenólicos (HPL) de alta calidad, que ofrecen durabilidad excepcional, estética moderna y fácil mantenimiento. Ideales para aplicaciones interiores y exteriores, nuestro equipo experto garantiza una instalación impecable que eleva la apariencia y funcionalidad de tu propiedad.",
+      textThirtySeven: "La instalación de pisos en mi baño fue excepcional. El equipo fue profesional, eficiente y el resultado es impresionante. Los nuevos pisos son duraderos y se ven fantásticos. ¡Recomiendo altamente sus servicios!",
+      textThirtyEight: "Impresionante instalación de paneles acústicos en paredes. Los instaladores mostraron destreza y cuidado, logrando acabados uniformes y un aspecto muy limpio. La acústica de la sala mejoró notablemente y la pared aporta un toque moderno y elegante. Muy satisfecho con el resultado final.",
     }
   };
 
@@ -107,6 +111,14 @@ const Home = ({ language }) => {
     {
       textKey: 'textThirtyThree',
       author: 'Maria Gonzales — Sanford, FL',
+    },
+    {
+      textKey: 'textThirtySeven',
+      author: 'Mike Benitez — Westfield, IN',
+    },
+    {
+      textKey: 'textThirtyEight',
+      author: 'Billy Gordon — Jacksonville, FL',
     },
   ];
 
@@ -143,7 +155,7 @@ const Home = ({ language }) => {
     setFade(false);
     setTimeout(() => {
       setTestimonialIndex((prev) =>
-        prev === 0 ? testimonialsData.length - 2 : prev - 2
+        prev === 0 ? testimonialsData.length - 4 : prev - 4
       );
       setFade(true);
       startTimer();
@@ -154,7 +166,7 @@ const Home = ({ language }) => {
     setFade(false);
     setTimeout(() => {
       setTestimonialIndex((prev) =>
-        prev + 2 >= testimonialsData.length ? 0 : prev + 2
+        prev + 4 >= testimonialsData.length ? 0 : prev + 4
       );
       setFade(true);
       startTimer();
@@ -167,7 +179,7 @@ const Home = ({ language }) => {
       setFade(false);
       setTimeout(() => {
         setTestimonialIndex((prev) =>
-          prev + 2 >= testimonialsData.length ? 0 : prev + 2
+          prev + 4 >= testimonialsData.length ? 0 : prev + 4
         );
         setFade(true);
       }, 10);
@@ -425,7 +437,7 @@ const Home = ({ language }) => {
           </div>
         <div className="testimonials__contenedor">
           {testimonialsData
-            .slice(testimonialIndex, testimonialIndex + 2)
+            .slice(testimonialIndex, testimonialIndex + 4)
             .map((testimonial, idx) => (
               <div
                 className={`testimonial${fade ? ' testimonial--fade' : ''}`}
