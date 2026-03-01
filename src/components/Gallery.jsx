@@ -39,6 +39,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig36_1_despues.avif', '../../assets/img/mixtas/galeria/ig36_2_despues.avif', '../../assets/img/mixtas/galeria/ig36_3_despues.avif', '../../assets/img/mixtas/galeria/ig36_4_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Roofing repair'] : ['Reparación de techo'],
+      ubicacion: 'Westfield, IN',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig37_1_durante.avif', '../../assets/img/mixtas/galeria/ig37_2_durante.avif', '../../assets/img/mixtas/galeria/ig37_3_durante.avif', '../../assets/img/mixtas/galeria/ig37_4_durante.avif', '../../assets/img/mixtas/galeria/ig37_5_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig37_1_despues.avif', '../../assets/img/mixtas/galeria/ig37_2_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
