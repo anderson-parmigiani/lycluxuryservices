@@ -18,6 +18,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig5_1_despues.avif', '../../assets/img/mixtas/galeria/ig5_2_despues.avif', '../../assets/img/mixtas/galeria/ig5_3_despues.avif', '../../assets/img/mixtas/galeria/ig5_4_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Ceiling installation'] : ['Instalación de techo'],
+      ubicacion: 'Orlando, FL',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig39_1_durante.avif', '../../assets/img/mixtas/galeria/ig39_2_durante.avif', '../../assets/img/mixtas/galeria/ig39_3_durante.avif', '../../assets/img/mixtas/galeria/ig39_4_durante.avif', '../../assets/img/mixtas/galeria/ig39_5_durante.avif', '../../assets/img/mixtas/galeria/ig39_6_durante.avif', '../../assets/img/mixtas/galeria/ig39_7_durante.avif', '../../assets/img/mixtas/galeria/ig39_8_durante.avif', '../../assets/img/mixtas/galeria/ig39_9_durante.avif', '../../assets/img/mixtas/galeria/ig39_10_durante.avif', '../../assets/img/mixtas/galeria/ig39_11_durante.avif', '../../assets/img/mixtas/galeria/ig39_12_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig39_1_despues.avif', '../../assets/img/mixtas/galeria/ig39_2_despues.avif', '../../assets/img/mixtas/galeria/ig39_3_despues.avif', '../../assets/img/mixtas/galeria/ig39_4_despues.avif', '../../assets/img/mixtas/galeria/ig39_5_despues.avif', '../../assets/img/mixtas/galeria/ig39_6_despues.avif', '../../assets/img/mixtas/galeria/ig39_7_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Celebration, FL',
       antes: ['../../assets/img/mixtas/galeria/ig6_1_antes.avif', '../../assets/img/mixtas/galeria/ig6_2_antes.avif'],
