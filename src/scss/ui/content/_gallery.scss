@@ -224,6 +224,19 @@
   overflow: hidden !important;
 }
 
+/* Remove default blue focus outlines and tap highlights on mobile/browsers for modal */
+.ReactModal__Content:focus,
+.ReactModal__Overlay:focus,
+.modal__inner:focus,
+.modal__button:focus,
+.modal__close:focus,
+.modal__image-wrapper img:focus,
+.modal__image-wrapper video:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .modal__inner {
   position: relative;
   width: 100%;
@@ -236,11 +249,12 @@
 .modal__close {
   position: absolute;
   top: 0.6rem;
-  right: 0.6rem;
+  right: 1.2rem;
   background: transparent;
   border: none;
   color: #fff;
   font-size: 2.6rem;
+  padding: 0.12rem 0.36rem;
   line-height: 1;
   cursor: pointer;
   z-index: 20;
@@ -256,6 +270,7 @@
   position: absolute;
   color: #fff;
   padding: 0.2rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .modal__button svg { display: block; }
