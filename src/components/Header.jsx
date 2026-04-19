@@ -1,39 +1,190 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ language, setLanguageHandler }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/' || location.pathname === '/home';
+  const [headerIsDark, setHeaderIsDark] = useState(false);
+  const [overHero, setOverHero] = useState(false);
+  const rafRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen((s) => !s);
 
   const textMap = {
     en: {
-      linkOne: "Home",
-      linkTwo: "Project Gallery",
-      linkThree: "Contact us"
+      linkOne: 'Home',
+      linkTwo: 'Project Gallery',
+      linkThree: 'Contact us'
     },
     es: {
-      linkOne: "Inicio",
-      linkTwo: "Galería de Proyectos",
-      linkThree: "Contáctanos"
+      linkOne: 'Inicio',
+      linkTwo: 'Galería de Proyectos',
+      linkThree: 'Contáctanos'
     }
   };
 
-  const handleLinkClick = () => {
-    toggleMenu();
-  };
+  const handleLinkClick = () => setIsMenuOpen(false);
+
+  // Close menu on navigation
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Header theme detection: deterministic bounding-rect checks with
+  // prioritized .services overlap, then .hero (gradient/image sampling).
+  useEffect(() => {
+    let sampleImg = null;
+    let cancelledSample = false;
+    let currentCheckId = 0;
+
+    const sampleImageDarkness = (url) => {
+      return new Promise((resolve) => {
+        try {
+          const img = new Image();
+          sampleImg = img;
+          img.crossOrigin = 'Anonymous';
+          img.src = url;
+          img.onload = () => {
+            if (cancelledSample) return resolve(false);
+            try {
+              const canvas = document.createElement('canvas');
+              const ctx = canvas.getContext('2d');
+              const w = 80, h = 80;
+              canvas.width = w; canvas.height = h;
+              ctx.drawImage(img, 0, 0, w, h);
+              const data = ctx.getImageData(0, 0, w, h).data;
+              let total = 0, count = 0;
+              for (let i = 0; i < data.length; i += 32) {
+                const r = data[i], g = data[i + 1], b = data[i + 2];
+                const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                total += lum; count++;
+              }
+              const avg = (total / count) / 255;
+              resolve(avg < 0.5);
+            } catch (e) {
+              resolve(false);
+            }
+          };
+          img.onerror = () => resolve(false);
+        } catch (e) {
+          resolve(false);
+        }
+      });
+    };
+
+    const computeHeroDarkness = async () => {
+      const heroEl = document.querySelector('.hero');
+      if (!heroEl) return false;
+      const style = getComputedStyle(heroEl);
+      const bg = style.backgroundImage || '';
+
+      if (bg.includes('linear-gradient')) {
+        const rgbaMatches = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*(\d?.?\d*)?\)/g) || [];
+        for (const m of rgbaMatches) {
+          const parts = m.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*(\d?.?\d*)?\)/);
+          if (!parts) continue;
+          const r = +parts[1], g = +parts[2], b = +parts[3];
+          const a = parts[4] ? +parts[4] : 1;
+          const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+          if (lum < 0.5 && a > 0.15) {
+            return true;
+          }
+        }
+      }
+
+      const urlMatch = bg.match(/url\((?:(?:"|')?)(.*?)(?:(?:"|')?)\)/);
+      if (urlMatch && urlMatch[1]) {
+        return await sampleImageDarkness(urlMatch[1].replace(/(^\"|\"$)/g, ''));
+      }
+
+      const bgColor = style.backgroundColor || '';
+      const m = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (m) {
+        const r = +m[1], g = +m[2], b = +m[3];
+        const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        return lum < 0.5;
+      }
+
+      return false;
+    };
+
+    const rectsOverlap = (rectA, rectB) => {
+      return rectA.top < rectB.bottom && rectA.bottom > rectB.top;
+    };
+
+    const resetState = () => {
+      setOverHero(false);
+      setHeaderIsDark(false);
+    };
+
+    const checkHeaderTheme = async () => {
+      const checkId = ++currentCheckId;
+      const headerEl = document.querySelector('header');
+      const servicesEl = document.querySelector('.services');
+      const heroEl = document.querySelector('.hero');
+      if (!headerEl) return resetState();
+
+      const headerRect = headerEl.getBoundingClientRect();
+      if (servicesEl) {
+        const servicesRect = servicesEl.getBoundingClientRect();
+        if (rectsOverlap(headerRect, servicesRect)) {
+          setOverHero(true);
+          setHeaderIsDark(true);
+          return;
+        }
+      }
+
+      if (heroEl) {
+        const heroRect = heroEl.getBoundingClientRect();
+        if (rectsOverlap(headerRect, heroRect)) {
+          const isDark = await computeHeroDarkness();
+          if (cancelledSample || checkId !== currentCheckId) return;
+          setOverHero(true);
+          setHeaderIsDark(isDark);
+          return;
+        }
+      }
+
+      resetState();
+    };
+
+    const onScrollOrResize = () => {
+      if (rafRef.current) return;
+      rafRef.current = window.requestAnimationFrame(async () => {
+        await checkHeaderTheme();
+        rafRef.current = null;
+      });
+    };
+
+    checkHeaderTheme();
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+
+    return () => {
+      window.removeEventListener('scroll', onScrollOrResize);
+      window.removeEventListener('resize', onScrollOrResize);
+      cancelledSample = true;
+      if (sampleImg) sampleImg.src = '';
+      if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
+    };
+  }, [location.pathname]);
+
+  const headerClasses = ['header'];
+  if (overHero) {
+    headerClasses.push('header--over-hero');
+    headerClasses.push(headerIsDark ? 'header--is-dark' : 'header--is-light');
+  }
 
   return (
-    <header className="header">
+    <header className={headerClasses.join(' ')}>
       {isMenuOpen && <div className="header__overlay" onClick={toggleMenu}></div>}
       <div className="header__barra header__contenedor">
         <Link className="header__logo-link" to="/home">
           <img
+            className="header__logo-img"
             src="../../assets/img/mixtas/logo_f_wbg.png"
             alt="logo"
-            width="120"
             loading="lazy"
             decoding="async"
           />

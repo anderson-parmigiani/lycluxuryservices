@@ -10,7 +10,8 @@ html {
 body {
     font-family: v.$fuentePrincipal;
     background-color: v.$primario;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+    color: v.$secundario;
 }
 #root {
     display: flex;
@@ -22,8 +23,8 @@ body {
     flex: 1;
 }
 [class$="__contenedor"] {
-    width: 90%;
-    max-width: 1200px;
+    width: 92%;
+    max-width: 1300px;
     margin: 0 auto;
 }
 img {

@@ -91,12 +91,12 @@
 }
 
 .error-message {
-  font-size: 1.2rem;
-  margin-top: 1.5rem;
-  font-weight: 600;
-  color: red;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #b91c1c;
   position: absolute;
-  line-height: 0;
+  line-height: 1;
   &__textarea {
     margin-top: -2.5rem;
   }
@@ -129,20 +129,31 @@
 
 .section_10 .responsive-container-block.form-container {
   width: 90%;
-  padding: 60px;
+  padding: 48px;
   margin: 0px auto;
-  border-radius: 4px;
-  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  border: 1px solid rgba(107,112,128,0.12);
+  background-color: v.$blanco;
+  box-shadow: 0 10px 30px rgba(15,23,36,0.04);
   max-width: 1150px;
 }
 
 .section_10 .input {
   width: 100%;
-  background-color: #f8f8f8;
-  height: 60px;
-  border: 1px solid #e5e5e5;
-  padding: 5px 12px;
-  font-size: 16px;
+  background-color: v.$blanco;
+  color: v.$secundario;
+  height: 56px;
+  border: 1px solid rgba(15,23,36,0.08);
+  padding: 12px 14px;
+  font-size: 1.6rem;
+  border-radius: 8px;
+}
+
+.section_10 .input:focus,
+.section_10 .textinput:focus {
+  outline: none;
+  border-color: darken(v.$terciario, 6%);
+  box-shadow: 0 6px 20px rgba(15,23,36,0.06), 0 0 0 4px rgba(v.$terciario, 0.12);
 }
 
 .section_10 .responsive-cell-block.wk-desk-8.wk-ipadp-8.wk-tab-12.wk-mobile-12,
@@ -155,32 +166,34 @@
 .section_10 .textinput {
   width: 100%;
   margin-bottom: 35px;
-  height: 140px;
-  border: 1px solid #e5e5e5;
-  background-color: #f8f8f8;
-  padding: 10px 12px;
-  font-size: 16px;
+  min-height: 140px;
+  border: 1px solid rgba(15,23,36,0.08);
+  background-color: v.$blanco;
+  padding: 12px 14px;
+  font-size: 1.6rem;
+  border-radius: 8px;
 }
 
 .section_10 .submit-btn {
-  background-color: lighten(v.$gris, 20%);
-  @include m.boton(v.$terciario, v.$negro);
+  @include m.boton(v.$terciario, v.$blanco);
   width: 100%!important;
   height: 66px;
   cursor: pointer;
-  box-shadow: rgba(244, 152, 146, 0.25) 0px 10px 20px;
-  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(15,23,36,0.08);
+  border-radius: 12px;
   border-style: none;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(15,23,36,0.12);
+  }
 
   &:disabled {
     cursor: default;
-    color: lighten(v.$negro, 20%);
-    background-color: v.$terciario;
-    &:hover {
-      background-color: v.$terciario;
-    }
+    opacity: 0.8;
   }
 }
 

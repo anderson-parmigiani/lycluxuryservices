@@ -3,31 +3,49 @@
 
 .hero {
     display: flex;
-    gap: 5rem;
+    gap: 3rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: center;
-    background-position-y: 75%;
-    background-image: linear-gradient(180deg, rgba(10,2,2,0.4) 0%, rgba(10,2,2,0.18) 99%), url(/public/assets/img/mixtas/galeria/ig14_12_despues.avif);
-    height: 60rem;
+    background-position: center 80%;
+    background-image: linear-gradient(180deg, rgba(15,23,36,0.55) 0%, rgba(15,23,36,0.25) 80%), url(/public/assets/img/mixtas/galeria/ig14_12_despues.avif);
+    min-height: 60vh;
+    padding-block: 6rem;
 
     &__heading {
         text-align: center;
         padding-inline: 1rem;
-        @include m.telefono {
-            font-size: 6.2rem;
-        }
+        font-family: v.$fuenteHeading;
+        font-weight: 700;
         color: v.$blanco;
+        font-size: 4.8rem;
+        @include m.telefono {
+            font-size: 5.2rem;
+        }
     }
 
     &__button {
-        @include m.boton(v.$terciario, v.$negro);
-        margin-inline: 4rem;
+        @include m.boton(v.$terciario, v.$blanco);
+        margin-inline: 2rem;
         text-transform: uppercase;
         text-align: center;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(15,23,36,0.12);
+    }
+}
+
+/* Ensure sections that use the dark secondary background show light text */
+.services {
+    color: v.$blanco;
+
+    &__heading {
+        color: v.$blanco;
+    }
+
+    &__content {
+        color: v.$blanco;
     }
 }
 
@@ -156,7 +174,7 @@
 
 .accordion-link {
     font-size: 1.6rem;
-    color: rgba(255,255,255,.8);
+    color: v.$secundario;
     text-decoration: none;
     width: 100%;
     display: flex;
@@ -218,6 +236,22 @@
 
 .accordion-item:target .accordion-link .ion-md-arrow-down {
     display: block;
+}
+
+/* When services section uses dark background, ensure accordions are white */
+.services .accordion-link {
+    color: v.$blanco;
+}
+
+/* Make sure headings inside accordion are white in the services section */
+.services .accordion-link h3 {
+    color: v.$blanco !important;
+}
+
+/* Ensure the accordion answer text is visible on the dark services background */
+.services .answer,
+.services .answer p {
+    color: v.$blanco;
 }
 
 .testimonials {

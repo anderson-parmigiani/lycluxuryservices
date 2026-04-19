@@ -145,8 +145,37 @@
 
     video {
       object-fit: cover;
-      background: v.$negro;
+      background: linear-gradient(180deg, rgba(107,114,128,0.12), rgba(15,23,36,0.08));
       cursor: default;
+      box-shadow: 0 8px 20px rgba(15,23,36,0.06);
+    }
+
+    .video-thumb {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video__play-overlay {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: v.$blanco;
+      font-size: 1.6rem;
+      opacity: 0.95;
+      pointer-events: none;
+      background: rgba(15,23,36,0.6);
+      width: 3.2rem;
+      height: 3.2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      box-shadow: 0 6px 18px rgba(15,23,36,0.18);
     }
   }
 

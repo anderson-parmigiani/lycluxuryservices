@@ -2,16 +2,23 @@
 @use '../../base/mixins' as m;
 
 .header {
-    padding: 2rem 0 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: transparent;
+    backdrop-filter: blur(6px);
+    padding: 1rem 0;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    color: v.$secundario;
 
     &__overlay {
         position: fixed;
         top: 0;
-        left: 0; 
-        width: 100%; 
-        height: 100%; 
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.6);
-        z-index:101;
+        z-index: 9998;
         @include m.desktop {
             display: none;
         }
@@ -21,42 +28,59 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+        width: 100%;
+        padding-inline: 1rem;
+
         @include m.desktop {
             gap: 0;
         }
     }
 
     &__logo-link {
-        width: 40%;
+        width: auto;
         flex-shrink: 0;
 
-        @include m.telefono {
-            width: 30%;
-        }
+        img { display: block; height: auto; max-height: 120px; width: auto; }
+
         @include m.tablet {
-            width: 25%;
+            img { max-height: 100px; }
         }
-        @include m.desktop {
-            width: 20%;
+
+        @include m.telefono {
+            img { max-height: 56px; }
         }
+
+        /* helper class applied to the img element */
+        .header__logo-img { display: block; height: auto; max-height: 120px; width: auto; }
+    }
+
+    &:not(.header--over-hero) {
+        .sidebar__enlace,
+        .header__phone-number,
+        .header__language-button {
+            color: v.$secundario !important;
+        }
+
+        .header__collapse { filter: none !important; }
     }
 
     &__collapse {
-        width: 2rem;
-        height: 2rem;
-        background-image: url(/public/assets/img/iconos/three-dots.svg);
+        width: 2.4rem;
+        height: 2.4rem;
+        background-image: url(/assets/img/iconos/three-dots.svg);
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 2rem auto;
+        background-size: 2.2rem auto;
         transition: 0.2s;
         cursor: pointer;
         @include m.desktop {
             display: none;
         }
         &:hover {
-            opacity: 0.75;
+            opacity: 0.85;
         }
+        margin-left: 0.6rem;
+        margin-right: 0.6rem;
 
     }
 
@@ -65,16 +89,17 @@
         align-items: center;
         justify-content: center;
         font-size: 1.8rem;
+        color: v.$secundario;
         &::before {
             @include m.telefono {
                 content: '';
                 display: inline-block;
                 width: 2.5rem;
                 height: 2.5rem;
-                background-image: url(/public/assets/img/iconos/telephone-fill.svg);
+                background-image: url(/assets/img/iconos/telephone-fill.svg);
                 background-size: 2.5rem auto;
                 margin-right: 0.75rem;
-            };
+            }
         }
     }
 
@@ -87,32 +112,113 @@
             flex-basis: 100%;
         }
 
-        &-button {
-            @include m.boton(v.$primario, v.$negro);
+            &-button {
+            @include m.boton(v.$terciario, v.$blanco);
             cursor: pointer;
             margin-top: 0;
             padding-inline: 1rem;
-            transition-property: color;
-            background-color: v.$primario;
+            transition-property: color, background;
+            background-color: v.$terciario;
+            color: v.$blanco;
             @include m.desktop {
                 padding: 0 0 0 2rem;
             }
             
             &:not(:disabled):hover {
-                background-color: v.$primario;
-                color: v.$gris;
-            }
-    
-            &:disabled {
-                background-color: v.$primario;
-                cursor: auto;
-                opacity: 0.6;
+                background-color: darken(v.$terciario, 6%);
+                color: v.$blanco;
             }
 
+            &:disabled {
+                background-color: v.$gris;
+                cursor: auto;
+                opacity: 0.9;
+            }
 
         }
     }
 }
+
+/* Header-level classes to guarantee correct colors regardless of body classes.
+   This removes the unreliable dependency on `body.hero-is-dark` and keeps the
+   header color logic local to the header state. */
+.header.header--over-hero.header--is-light {
+    background-color: v.$primario;
+    color: v.$secundario !important;
+    .header__language-button { background-color: v.$terciario; color: v.$blanco; }
+    .sidebar__enlace,
+    .header__phone-number,
+    .header__language-button {
+        color: v.$secundario !important;
+    }
+    .sidebar__social-element::after { filter: none; }
+    .header__collapse { filter: none; }
+}
+
+.header.header--over-hero.header--is-dark {
+    background-color: transparent;
+    color: v.$blanco !important;
+
+    /* Force header text to white for all header descendants to ensure
+       legibility when header is over dark sections. We'll add a
+       specific override for the mobile-open sidebar below to keep
+       that panel dark-text. */
+    &, & * {
+        color: v.$blanco !important;
+    }
+
+    .header__collapse { filter: invert(1) contrast(120%); }
+    .header__phone-number{color: v.$blanco !important; &::before { filter: invert(1) brightness(1.5); } }
+    .sidebar__enlace { color: v.$blanco !important; }
+    .sidebar__social-element::after { filter: invert(1) brightness(2); }
+    .header__language-button { background-color: rgba(255,255,255,0.08); color: v.$blanco !important; border: 1px solid rgba(255,255,255,0.06); }
+}
+
+/* When the mobile sidebar is opened we want the menu panel to show
+   dark text on white. Make explicit overrides so it wins over the
+   header-level forced white color above. */
+.header.header--over-hero.header--is-dark .sidebar--open .sidebar__enlace,
+.header.header--over-hero.header--is-dark .sidebar--open .header__phone-number,
+.header.header--over-hero.header--is-dark .sidebar--open .header__language-button,
+.header.header--over-hero.header--is-dark .sidebar--open .sidebar__social-element,
+.header.header--over-hero.header--is-dark .sidebar--open .sidebar__social-element::after,
+.header.header--over-hero.header--is-dark .sidebar--open .sidebar__close .icon {
+    color: v.$secundario !important;
+}
+.header.header--over-hero.header--is-dark .sidebar--open .sidebar__social-element::after {
+    filter: none !important;
+}
+.header.header--over-hero.header--is-dark .sidebar--open .header__language-button {
+    background-color: v.$blanco !important;
+    color: v.$secundario !important;
+    border: 1px solid rgba(15,23,36,0.06) !important;
+}
+.header.header--over-hero.header--is-dark .sidebar--open .icon {
+    filter: none !important;
+}
+
+/* Always keep the mobile sidebar open panel in dark text mode on white. */
+.header .sidebar--open .sidebar__enlace,
+.header .sidebar--open .header__phone-number,
+.header .sidebar--open .header__language-button,
+.header .sidebar--open .sidebar__social-element,
+.header .sidebar--open .sidebar__close .icon {
+    color: v.$secundario !important;
+}
+.header .sidebar--open .sidebar__social-element::after,
+.header .sidebar--open .header__phone-number::before {
+    filter: none !important;
+}
+.header .sidebar--open .header__language-button {
+    background-color: v.$blanco !important;
+    color: v.$secundario !important;
+    border: 1px solid rgba(15,23,36,0.06) !important;
+}
+
+/* NOTE: sidebar open/closed visual styles should be scoped to the
+   `.sidebar` element so desktop header layout isn't transformed into
+   a full-screen white panel. The mobile full-screen styles live inside
+   the nested `&--open` block below and are reset for desktop breakpoints. */
 
 .sidebar {
     position: fixed;
@@ -120,9 +226,9 @@
     right: 0;
     width: 55%;
     height: 100%;
-    background-color: v.$primario;
+    background-color: v.$blanco;
     padding: 5.5rem 2rem;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: -2px 0 15px rgba(15, 23, 36, 0.08);
     transform: translateX(100%);
     transition: transform 0.3s ease;
     z-index: 102;
@@ -146,15 +252,31 @@
         width: initial;
         position: initial;
         box-shadow: none;
-        background-color: v.$primario;
+        background-color: transparent;
         z-index: unset;
     }
 
     &--open {
         transform: translateX(0);
 
+        /* Mobile full-screen visual for opened sidebar */
+        background-color: v.$blanco !important;
+        min-height: 100vh;
+        height: 100vh;
+        z-index: 9999;
+        .sidebar__enlace { color: v.$secundario; }
+        .sidebar__social-element::after { filter: none; }
+        .header__phone-number { color: v.$secundario; &::before { filter: none; } }
+        .header__language-button { background-color: v.$blanco; color: v.$secundario; border: 1px solid rgba(15,23,36,0.06); }
+
         @include m.desktop {
+            /* On desktop the sidebar is used as inline nav; avoid full-screen overlay styles */
             transform: none;
+            background-color: transparent !important;
+            min-height: auto;
+            height: auto;
+            z-index: unset;
+            .header__language-button { background-color: transparent; color: inherit; border: none; }
         }
     }
 
@@ -191,7 +313,7 @@
         .icon {
             height: 2rem;
             width: 2rem;
-            background-image: url(/public/assets/img/iconos/x-lg.svg);
+            background-image: url(/assets/img/iconos/x-lg.svg);
             background-size: 2rem auto;
             background-repeat: no-repeat;
             transition: 0.2s;
@@ -207,6 +329,7 @@
         font-size: 2rem;
         margin: 3rem 0;
         transition: 0.2s;
+        color: v.$secundario;
 
         @include m.desktop {
             margin: 0;

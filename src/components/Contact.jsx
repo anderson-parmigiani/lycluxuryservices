@@ -226,9 +226,17 @@ const Contact = ({ language }) => {
         />
       </Helmet>
       <div className="responsive-container-block container">
-        <h2 className="form-heading">{textMap[language].textOne}</h2>
+        <h2 className="form-heading" id="contact-heading">{textMap[language].textOne}</h2>
         <p className="form-text">{textMap[language].textTen}</p>
-        <form name="contactFormData" netlify-honeypot="bot-field" data-netlify="true" id="iox4" onSubmit={handleSubmit}>
+        <form
+          name="contactFormData"
+          netlify-honeypot="bot-field"
+          data-netlify="true"
+          id="iox4"
+          onSubmit={handleSubmit}
+          role="form"
+          aria-labelledby="contact-heading"
+        >
           <input type="hidden" name="form-name" value="contactFormData" />
           <p className="hidden">
             <input name="bot-field" />
@@ -245,8 +253,12 @@ const Contact = ({ language }) => {
                 placeholder={textMap[language].textSix}
                 value={formData.name}
                 onChange={handleChange}
+                aria-label={textMap[language].textTwo}
+                aria-required="true"
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'name-error' : undefined}
               />
-              {errors.name && <p className="error-message">{errors.name}</p>}
+              {errors.name && <p id="name-error" className="error-message" role="alert">{errors.name}</p>}
             </div>
             <div className="responsive-cell-block wk-desk-8 wk-ipadp-8 wk-tab-12 wk-mobile-12 email">
               <p className="text-blk input-title">
@@ -259,8 +271,12 @@ const Contact = ({ language }) => {
                 placeholder={textMap[language].textSeven}
                 value={formData.email}
                 onChange={handleChange}
+                aria-label={textMap[language].textThree}
+                aria-required="true"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'email-error' : undefined}
               />
-              {errors.email && <p className="error-message">{errors.email}</p>}
+              {errors.email && <p id="email-error" className="error-message" role="alert">{errors.email}</p>}
             </div>
             <div className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-4">
               <p className="text-blk input-title">
@@ -273,8 +289,12 @@ const Contact = ({ language }) => {
                 placeholder={textMap[language].textTwelve}
                 value={formData.phone}
                 onChange={handleChange}
+                aria-label={textMap[language].textEleven}
+                aria-required="true"
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
               />
-              {errors.phone && <p className="error-message">{errors.phone}</p>}
+              {errors.phone && <p id="phone-error" className="error-message" role="alert">{errors.phone}</p>}
             </div>
             <div className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-5">
               <p className="text-blk input-title">
@@ -287,8 +307,12 @@ const Contact = ({ language }) => {
                 placeholder={textMap[language].textEight}
                 value={formData.message}
                 onChange={handleChange}
+                aria-label={textMap[language].textFour}
+                aria-required="true"
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? 'message-error' : undefined}
               ></textarea>
-              {errors.message && <p className="error-message error-message__textarea">{errors.message}</p>}
+              {errors.message && <p id="message-error" className="error-message error-message__textarea" role="alert">{errors.message}</p>}
             </div>
             <div className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12">
               <button
@@ -296,6 +320,7 @@ const Contact = ({ language }) => {
                 id="w-c-s-bgc_p-1-dm-id-3"
                 type="submit"
                 disabled={isButtonDisabled}
+                aria-live="polite"
               >
                 {buttonText}
               </button>

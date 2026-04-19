@@ -2,7 +2,8 @@
 @use '../../base/mixins' as m;
 
 .footer {
-    background-color: lighten(v.$gris, 10%);
+    background-color: v.$secundario;
+    color: v.$blanco;
     margin-top: auto;
     &__grid {
         @include m.grid(1, 3rem);
@@ -14,15 +15,16 @@
         }
     }
 
-    &__copyright {
-        text-align: center;
-          @include m.tablet {
-            text-align: left;
-            grid-column: 1;
-            grid-row: 1;
-          }
-        grid-row: 3;
-    }
+        &__copyright {
+                text-align: center;
+                    @include m.tablet {
+                        text-align: left;
+                        grid-column: 1;
+                        grid-row: 1;
+                    }
+                grid-row: 3;
+                a { color: v.$blanco; }
+        }
 
     &__address {
         @include m.tablet {
@@ -31,10 +33,16 @@
         }
     }
 
+    &__design-by {
+        a { color: v.$blanco; opacity: 0.95; text-decoration: none; font-size: 1.6rem; }
+        a:hover { text-decoration: underline; }
+    }
+
     &__nav-pages {
         display: flex;
         grid-row: 1;
         gap: 1.5rem;
+        a { color: v.$blanco; }
         @include m.telefono {
             gap: 2rem;
         }
@@ -52,6 +60,7 @@
         display: flex;
         gap: 2rem;
         grid-row: 2;
+        a { color: v.$blanco; }
         @include m.tablet {
             grid-column: 2;
             grid-row: 3;
@@ -59,6 +68,11 @@
         }
     }
 
+}
+
+/* Invert pseudo-element icon images (svg/png) in footer so they appear light */
+.footer .sidebar__social--footer .sidebar__social-element::after {
+  filter: invert(1) brightness(1.6);
 }
 
 .sidebar__social--footer {

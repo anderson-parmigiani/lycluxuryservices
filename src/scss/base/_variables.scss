@@ -1,15 +1,15 @@
 // Fuentes
-$fuentePrincipal: "Spectral", serif;
-$fuenteHeading: "PT Serif", serif;
-$fuenteSnippet: "Fira Sans", serif;
+$fuentePrincipal: "Fira Sans", sans-serif;
+$fuenteHeading: "Spectral", serif;
+$fuenteSnippet: "PT Serif", serif;
 
-// Colores
-$primario: #F8FAFC;
-$secundario: #D9EAFD;
-$terciario: #BCCCDC;
-$gris: #9AA6B2;
-$blanco: #FFFFFF;
-$negro: #000000;
+// Colores (tema: construcción / profesional)
+$primario: #f6f7f8; // página fondo claro
+$secundario: #0f1724; // tono oscuro para texto y encabezados
+$terciario: #f59e0b; // acento ámbar / construcción
+$gris: #6b7280; // gris neutro
+$blanco: #ffffff;
+$negro: #0b0f13;
 
 // Breakpoints
 $telefono: 480px;

@@ -147,6 +147,73 @@ const Home = ({ language }) => {
     };
   }, []);
 
+  // Detect whether the hero background is dark or light and add a body class
+  useEffect(() => {
+    const heroEl = document.querySelector('.hero');
+    if (!heroEl) return;
+
+    let cancelled = false;
+
+    const setBodyClass = (isDark) => {
+      document.body.classList.toggle('hero-is-dark', isDark);
+      document.body.classList.toggle('hero-is-light', !isDark);
+    };
+
+    const style = getComputedStyle(heroEl);
+    const bg = style.backgroundImage || '';
+    const urlMatch = bg.match(/url\((?:"|')?(.*?)(?:"|')?\)/);
+
+    const fallbackToBgColor = () => {
+      const bgColor = style.backgroundColor || '';
+      const m = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (m) {
+        const r = +m[1], g = +m[2], b = +m[3];
+        const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        setBodyClass(lum < 0.5);
+      } else {
+        setBodyClass(false);
+      }
+    };
+
+    if (urlMatch && urlMatch[1] && urlMatch[1] !== 'none') {
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src = urlMatch[1].replace(/(^\"|\"$)/g, '');
+
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const w = 100, h = 100;
+          canvas.width = w; canvas.height = h;
+          ctx.drawImage(img, 0, 0, w, h);
+          const data = ctx.getImageData(0, 0, w, h).data;
+          let total = 0, count = 0;
+          for (let i = 0; i < data.length; i += 16) {
+            const r = data[i], g = data[i + 1], b = data[i + 2];
+            const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            total += lum; count++;
+          }
+          const avg = (total / count) / 255;
+          setBodyClass(avg < 0.5);
+        } catch (e) {
+          fallbackToBgColor();
+        }
+      };
+
+      img.onerror = fallbackToBgColor;
+    } else {
+      fallbackToBgColor();
+    }
+
+    return () => {
+      if (!cancelled) {
+        document.body.classList.remove('hero-is-dark', 'hero-is-light');
+        cancelled = true;
+      }
+    };
+  }, []);
+
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [fade, setFade] = useState(false);
   const timerRef = useRef(null);
