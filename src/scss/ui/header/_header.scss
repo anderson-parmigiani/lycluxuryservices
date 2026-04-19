@@ -84,6 +84,10 @@
 
     }
 
+    .header--sidebar-open &__collapse {
+        display: none !important;
+    }
+
     &__phone-number {
         display: flex;
         align-items: center;

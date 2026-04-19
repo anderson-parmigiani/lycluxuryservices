@@ -175,6 +175,9 @@ const Header = ({ language, setLanguageHandler }) => {
     headerClasses.push('header--over-hero');
     headerClasses.push(headerIsDark ? 'header--is-dark' : 'header--is-light');
   }
+  if (isMenuOpen) {
+    headerClasses.push('header--sidebar-open');
+  }
 
   return (
     <header className={headerClasses.join(' ')}>
