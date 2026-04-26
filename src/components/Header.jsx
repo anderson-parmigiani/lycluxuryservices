@@ -26,13 +26,10 @@ const Header = ({ language, setLanguageHandler }) => {
 
   const handleLinkClick = () => setIsMenuOpen(false);
 
-  // Close menu on navigation
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Header theme detection: deterministic bounding-rect checks with
-  // prioritized .services overlap, then .hero (gradient/image sampling).
   useEffect(() => {
     let sampleImg = null;
     let cancelledSample = false;

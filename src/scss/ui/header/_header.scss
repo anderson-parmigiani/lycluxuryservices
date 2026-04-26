@@ -11,6 +11,16 @@
     transition: background 0.2s ease, box-shadow 0.2s ease;
     color: v.$secundario;
 
+    @media (max-width: 479px) {
+        padding: 0.95rem 0;
+        .header__barra {
+            padding-inline: 1rem;
+        }
+        .header__logo-link .header__logo-img {
+            max-height: 52px;
+        }
+    }
+
     &__overlay {
         position: fixed;
         top: 0;
@@ -46,12 +56,12 @@
             img { max-height: 100px; }
         }
 
-        @include m.telefono {
-            img { max-height: 56px; }
-        }
-
         /* helper class applied to the img element */
         .header__logo-img { display: block; height: auto; max-height: 120px; width: auto; }
+
+        @media (max-width: 479px) {
+            .header__logo-img { max-height: 40px; }
+        }
     }
 
     &:not(.header--over-hero) {
@@ -65,14 +75,15 @@
     }
 
     &__collapse {
+        position: relative;
         width: 2.4rem;
         height: 2.4rem;
-        background-image: url(/assets/img/iconos/three-dots.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 2.2rem auto;
+        background: transparent;
         transition: 0.2s;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         @include m.desktop {
             display: none;
         }
@@ -82,6 +93,14 @@
         margin-left: 0.6rem;
         margin-right: 0.6rem;
 
+        &::before {
+            content: '';
+            display: block;
+            width: 1.4rem;
+            height: 2px;
+            background-color: currentColor;
+            box-shadow: 0 -0.7rem currentColor, 0 0.7rem currentColor;
+        }
     }
 
     .header--sidebar-open &__collapse {
