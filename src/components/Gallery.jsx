@@ -74,6 +74,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig41_1_despues.avif', '../../assets/img/mixtas/galeria/ig41_2_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Kitchen remodel'] : ['Remodelación de cocina'],
+      ubicacion: 'Tampa, FL',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig42_1_durante.avif', '../../assets/img/mixtas/galeria/ig42_2_durante.avif', '../../assets/img/mixtas/galeria/ig42_3_durante.avif', '../../assets/img/mixtas/galeria/ig42_4_durante.avif', '../../assets/img/mixtas/galeria/ig42_5_durante.avif', '../../assets/img/mixtas/galeria/ig42_6_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig42_1_despues.avif', '../../assets/img/mixtas/galeria/ig42_2_despues.avif', '../../assets/img/mixtas/galeria/ig42_3_despues.avif', '../../assets/img/mixtas/galeria/ig42_4_despues.avif', '../../assets/img/mixtas/galeria/ig42_5_despues.avif', '../../assets/img/mixtas/galeria/ig42_6_despues.avif', '../../assets/img/mixtas/galeria/ig42_7_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
