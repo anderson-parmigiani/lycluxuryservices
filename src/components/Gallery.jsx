@@ -67,6 +67,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig37_1_despues.avif', '../../assets/img/mixtas/galeria/ig37_2_despues.avif']
     },
     {
+      descripcion: language === 'en' ? [''] : [''],
+      ubicacion: '',
+      antes: ['../../assets/img/mixtas/galeria/ig41_1_antes.avif', '../../assets/img/mixtas/galeria/ig41_2_antes.avif', '../../assets/img/mixtas/galeria/ig41_3_antes.avif', '../../assets/img/mixtas/galeria/ig41_4_antes.avif'],
+      durante: ['../../assets/img/mixtas/galeria/ig41_1_durante.avif', '../../assets/img/mixtas/galeria/ig41_2_durante.avif', '../../assets/img/mixtas/galeria/ig41_3_durante.avif', '../../assets/img/mixtas/galeria/ig41_4_durante.avif', '../../assets/img/mixtas/galeria/ig41_5_durante.avif', '../../assets/img/mixtas/galeria/ig41_6_durante.avif', '../../assets/img/mixtas/galeria/ig41_7_durante.avif', '../../assets/img/mixtas/galeria/ig41_8_durante.avif', '../../assets/img/mixtas/galeria/ig41_9_durante.avif', '../../assets/img/mixtas/galeria/ig41_10_durante.avif', '../../assets/img/mixtas/galeria/ig41_11_durante.avif', '../../assets/img/mixtas/galeria/ig41_12_durante.avif', '../../assets/img/mixtas/galeria/ig41_13_durante.avif', '../../assets/img/mixtas/galeria/ig41_14_durante.avif', '../../assets/img/mixtas/galeria/ig41_15_durante.avif', '../../assets/img/mixtas/galeria/ig41_16_durante.avif', '../../assets/img/mixtas/galeria/ig41_17_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig41_1_despues.avif', '../../assets/img/mixtas/galeria/ig41_2_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
