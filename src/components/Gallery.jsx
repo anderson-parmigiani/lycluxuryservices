@@ -39,6 +39,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig40_1_despues.avif', '../../assets/img/mixtas/galeria/ig40_2_despues.avif', '../../assets/img/mixtas/galeria/ig40_3_despues.avif', '../../assets/img/mixtas/galeria/ig40_4_despues.avif', '../../assets/img/mixtas/galeria/ig40_5_despues.avif', '../../assets/img/mixtas/galeria/ig40_6_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Acoustic Panels installation'] : ['Instalación de paneles acústicos'],
+      ubicacion: 'Jacksonville, FL',
+      antes: ['../../assets/img/mixtas/galeria/ig44_1_antes.avif'],
+      durante: ['../../assets/img/mixtas/galeria/ig44_1_durante.avif', '../../assets/img/mixtas/galeria/ig44_2_durante.avif', '../../assets/img/mixtas/galeria/ig44_3_durante.avif', '../../assets/img/mixtas/galeria/ig44_4_durante.avif', '../../assets/img/mixtas/galeria/ig44_5_durante.avif', '../../assets/img/mixtas/galeria/ig44_6_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig44_1_despues.avif', '../../assets/img/mixtas/galeria/ig44_2_despues.avif', '../../assets/img/mixtas/galeria/ig44_3_despues.avif', '../../assets/img/mixtas/galeria/ig44_4_despues.avif', '../../assets/img/mixtas/galeria/ig44_5_despues.avif', '../../assets/img/mixtas/galeria/ig44_6_despues.avif', '../../assets/img/mixtas/galeria/ig44_7_despues.avif', '../../assets/img/mixtas/galeria/ig44_8_despues.avif', '../../assets/img/mixtas/galeria/ig44_9_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
