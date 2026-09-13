@@ -5,6 +5,37 @@ import 'animate.css';
 
 Modal.setAppElement('#root');
 
+const shuffleProjects = (projects) => {
+  const shuffled = [...projects];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+
+  return shuffled;
+};
+
+const orderProjects = (projects) => {
+  const completeProjects = [];
+  const limitedProjects = [];
+
+  projects.forEach(project => {
+    const imageCategories = ['antes', 'durante', 'despues']
+      .filter(category => project[category]?.length > 0).length;
+    const imageCount = ['antes', 'durante', 'despues']
+      .reduce((total, category) => total + (project[category]?.length || 0), 0);
+
+    if (imageCategories <= 1 || imageCount <= 4) {
+      limitedProjects.push(project);
+    } else {
+      completeProjects.push(project);
+    }
+  });
+
+  return [...shuffleProjects(completeProjects), ...shuffleProjects(limitedProjects)];
+};
+
 const GalleryImg = ({ language, proyectos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -23,7 +54,7 @@ const GalleryImg = ({ language, proyectos }) => {
     if (!filteredProyectos || filteredProyectos.length <= 1) return;
     timerRef.current = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % filteredProyectos.length);
-    }, 10000);
+    }, 20000);
   }, [filteredProyectos]);
 
   const updateMinMaxIndexes = useCallback((current) => {
@@ -39,7 +70,7 @@ const GalleryImg = ({ language, proyectos }) => {
   }, [filteredProyectos]);
 
   useEffect(() => {
-    setFilteredProyectos(proyectos || []);
+    setFilteredProyectos(orderProjects(proyectos || []));
     setCurrentIndex(0);
     setSelectedButton('all');
   }, [proyectos]);
@@ -75,26 +106,26 @@ const GalleryImg = ({ language, proyectos }) => {
     setSelectedButton(filterType);
     const lowerCaseFilter = (filterType || '').toLowerCase();
     if (lowerCaseFilter === 'all') {
-      setFilteredProyectos(proyectos);
+      setFilteredProyectos(orderProjects(proyectos));
     } else if (lowerCaseFilter === 'acoustic insulation') {
-      setFilteredProyectos(proyectos.filter(project =>
+      setFilteredProyectos(orderProjects(proyectos.filter(project =>
         project.descripcion[0].toLowerCase().includes('acoustic') ||
         project.descripcion[0].toLowerCase().includes('acústico') ||
         project.descripcion[0].toLowerCase().includes('aislamiento') ||
         project.descripcion[0].toLowerCase().includes('insulation') ||
         project.descripcion[0].toLowerCase().includes('phenolic') ||
         project.descripcion[0].toLowerCase().includes('fenólicos')
-      ));
+      )));
     } else if (lowerCaseFilter === 'construction / remodeling') {
-      setFilteredProyectos(proyectos.filter(project =>
+      setFilteredProyectos(orderProjects(proyectos.filter(project =>
         !project.descripcion[0].toLowerCase().includes('cleaning') &&
         !project.descripcion[0].toLowerCase().includes('limpieza')
-      ));
+      )));
     } else if (lowerCaseFilter === 'cleaning') {
-      setFilteredProyectos(proyectos.filter(project =>
+      setFilteredProyectos(orderProjects(proyectos.filter(project =>
         project.descripcion[0].toLowerCase().includes('cleaning') ||
         project.descripcion[0].toLowerCase().includes('limpieza')
-      ));
+      )));
     }
     setCurrentIndex(0);
   };

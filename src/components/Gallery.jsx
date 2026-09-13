@@ -95,11 +95,39 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig43_1_despues.avif', '../../assets/img/mixtas/galeria/ig43_2_despues.avif', '../../assets/img/mixtas/galeria/ig43_3_despues.avif', '../../assets/img/mixtas/galeria/ig43_4_despues.avif', '../../assets/img/mixtas/galeria/ig43_5_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Acoustic Panels and Lighting installation'] : ['Instalación de paneles acústicos y luces'],
+      ubicacion: 'Orlando Convention Center, FL',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig45_1_durante.avif', '../../assets/img/mixtas/galeria/ig45_2_durante.avif', '../../assets/img/mixtas/galeria/ig45_3_durante.avif', '../../assets/img/mixtas/galeria/ig45_4_durante.avif', '../../assets/img/mixtas/galeria/ig45_5_durante.avif', '../../assets/img/mixtas/galeria/ig45_6_durante.avif', '../../assets/img/mixtas/galeria/ig45_7_durante.avif', '../../assets/img/mixtas/galeria/ig45_8_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig45_1_despues.avif', '../../assets/img/mixtas/galeria/ig45_2_despues.avif', '../../assets/img/mixtas/galeria/ig45_3_despues.avif', '../../assets/img/mixtas/galeria/ig45_4_despues.avif', '../../assets/img/mixtas/galeria/ig45_5_despues.avif']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Lake Mary, FL',
       antes: [],
       durante: [],
       despues: ['../../assets/img/mixtas/galeria/ig8_1_despues.avif', '../../assets/img/mixtas/galeria/ig8_2_despues.avif', '../../assets/img/mixtas/galeria/ig8_3_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Acoustic Panels installation'] : ['Instalación de paneles acústicos'],
+      ubicacion: 'Jacksonville, FL',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig47_1_durante.avif', '../../assets/img/mixtas/galeria/ig47_2_durante.avif', '../../assets/img/mixtas/galeria/ig47_3_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig47_1_despues.avif', '../../assets/img/mixtas/galeria/ig47_2_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
+      ubicacion: 'Jacksonville, FL',
+      antes: [],
+      durante: [],
+      despues: ['../../assets/img/mixtas/galeria/ig48_1_despues.avif', '../../assets/img/mixtas/galeria/ig48_2_despues.avif', '../../assets/img/mixtas/galeria/ig48_3_despues.avif', '../../assets/img/mixtas/galeria/ig48_4_despues.avif', '../../assets/img/mixtas/galeria/ig48_5_despues.avif', '../../assets/img/mixtas/galeria/ig48_6_despues.avif', '../../assets/img/mixtas/galeria/ig48_7_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Acoustic Panels installation'] : ['Instalación de paneles acústicos'],
+      ubicacion: 'Jacksonville, FL',
+      antes: [],
+      durante: [],
+      despues: ['../../assets/img/mixtas/galeria/ig46_1_despues.avif', '../../assets/img/mixtas/galeria/ig46_2_despues.avif', '../../assets/img/mixtas/galeria/ig46_3_despues.avif']
     },
     {
       descripcion: language === 'en' ? ['Acoustic Baffle ceiling installation'] : ['Instalación de deflector de techo acústico'],
@@ -285,16 +313,6 @@ const Gallery = ({ language }) => {
       descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
       ubicacion: 'St. Augustine, FL',
       despues: ['../../assets/img/mixtas/galeria/ig33_1_despues.avif', '../../assets/img/mixtas/galeria/ig33_2_despues.avif', '../../assets/img/mixtas/galeria/ig33_3_despues.avif', '../../assets/img/mixtas/galeria/ig33_4_despues.avif', '../../assets/img/mixtas/galeria/ig33_5_despues.avif']
-    },
-    {
-      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
-      ubicacion: 'Hollywood, FL',
-      despues: ['../../assets/img/mixtas/galeria/ig25_1_despues.avif']
-    },
-    {
-      descripcion: language === 'en' ? ['Deep Cleaning'] : ['Limpieza profunda'],
-      ubicacion: 'Orlando, FL',
-      despues: ['../../assets/img/mixtas/galeria/ig27_1_despues.avif']
     },
   ];
 
