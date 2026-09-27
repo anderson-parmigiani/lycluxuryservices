@@ -87,12 +87,19 @@ const Gallery = ({ language }) => {
       durante: ['../../assets/img/mixtas/galeria/ig42_1_durante.avif', '../../assets/img/mixtas/galeria/ig42_2_durante.avif', '../../assets/img/mixtas/galeria/ig42_3_durante.avif', '../../assets/img/mixtas/galeria/ig42_4_durante.avif', '../../assets/img/mixtas/galeria/ig42_5_durante.avif', '../../assets/img/mixtas/galeria/ig42_6_durante.avif'],
       despues: ['../../assets/img/mixtas/galeria/ig42_1_despues.avif', '../../assets/img/mixtas/galeria/ig42_2_despues.avif', '../../assets/img/mixtas/galeria/ig42_3_despues.avif', '../../assets/img/mixtas/galeria/ig42_4_despues.avif', '../../assets/img/mixtas/galeria/ig42_5_despues.avif', '../../assets/img/mixtas/galeria/ig42_6_despues.avif', '../../assets/img/mixtas/galeria/ig42_7_despues.avif']
     },
-        {
+    {
       descripcion: language === 'en' ? ['Acoustic Panels installation'] : ['Instalación de paneles acústicos'],
       ubicacion: 'Orlando, FL',
       antes: ['../../assets/img/mixtas/galeria/ig43_1_antes.avif'],
       durante: ['../../assets/img/mixtas/galeria/ig43_1_durante.avif', '../../assets/img/mixtas/galeria/ig43_2_durante.avif', '../../assets/img/mixtas/galeria/ig43_3_durante.avif', '../../assets/img/mixtas/galeria/ig43_4_durante.avif'],
       despues: ['../../assets/img/mixtas/galeria/ig43_1_despues.avif', '../../assets/img/mixtas/galeria/ig43_2_despues.avif', '../../assets/img/mixtas/galeria/ig43_3_despues.avif', '../../assets/img/mixtas/galeria/ig43_4_despues.avif', '../../assets/img/mixtas/galeria/ig43_5_despues.avif']
+    },
+    {
+      descripcion: language === 'en' ? ['Acoustic Panels installation'] : ['Instalación de paneles acústicos'],
+      ubicacion: 'Orlando, FL',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig49_1_durante.avif', '../../assets/img/mixtas/galeria/ig49_2_durante.avif'],
+      despues: ['../../assets/img/mixtas/galeria/ig49_1_despues.avif', '../../assets/img/mixtas/galeria/ig49_2_despues.avif', '../../assets/img/mixtas/galeria/ig49_3_despues.avif', '../../assets/img/mixtas/galeria/ig49_4_despues.avif', '../../assets/img/mixtas/galeria/ig49_5_despues.avif', '../../assets/img/mixtas/galeria/ig49_6_despues.avif', '../../assets/img/mixtas/galeria/ig49_7_despues.avif', '../../assets/img/mixtas/galeria/ig49_8_despues.avif']
     },
     {
       descripcion: language === 'en' ? ['Acoustic Panels and Lighting installation'] : ['Instalación de paneles acústicos y luces'],
