@@ -123,6 +123,13 @@ const Gallery = ({ language }) => {
       despues: ['../../assets/img/mixtas/galeria/ig47_1_despues.avif', '../../assets/img/mixtas/galeria/ig47_2_despues.avif']
     },
     {
+      descripcion: language === 'en' ? ['Acoustic Panels installation'] : ['Instalación de paneles acústicos'],
+      ubicacion: 'Tampa, FL',
+      antes: [],
+      durante: ['../../assets/img/mixtas/galeria/ig50_1_durante.jpeg', '../../assets/img/mixtas/galeria/ig50_2_durante.jpeg', '../../assets/img/mixtas/galeria/ig50_3_durante.jpeg', '../../assets/img/mixtas/galeria/ig50_4_durante.jpeg', '../../assets/img/mixtas/galeria/ig50_5_durante.jpeg', '../../assets/img/mixtas/galeria/ig50_6_durante.jpeg'],
+      despues: ['../../assets/img/mixtas/galeria/ig50_1_despues.jpeg', '../../assets/img/mixtas/galeria/ig50_2_despues.jpeg', '../../assets/img/mixtas/galeria/ig50_3_despues.jpeg', '../../assets/img/mixtas/galeria/ig50_4_despues.jpeg', '../../assets/img/mixtas/galeria/ig50_5_despues.jpeg']
+    },
+    {
       descripcion: language === 'en' ? ['Acoustic ceiling insulation'] : ['Aislamiento acústico de techo'],
       ubicacion: 'Jacksonville, FL',
       antes: [],
